@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>New User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
+</head>
+<body>
+    <div class="everything">
+    <div class="header">
+        <h1>Penguin Parking Services 
+            <img src="../media/penguin.png" alt="Penguin Parking Logo" class="logo">
+        </h1>        
+    </div>
+    <ul class="menu">
+        <li><a href="search.html">Search</a></li>
+        <li><a href="register.html">New User</a></li>
+        <li><a href="submission.html">New Parking Space</a></li>
+        <li><a href="error.html">Sign in</a></li>
+    </ul>
+    <br>
+
+    <div class="content">
+        <form action="search.html" method="POST" class="forms">
+            <p>
+            <label>Full Name:</label>
+                <input type="text" required="required">
+            </p>
+            <p>
+            <label>Username:</label>
+                <input type="text" required="required">
+            </p>
+            <p>
+            <label>Date of Birth:</label>
+                <!-- date is not supported in IE and Safari.
+                    It degrades to a text field. -->
+                <input type="date">
+            </p>
+            <p>
+            <label>E-mail:</label>
+                <input type="email" required="required">
+            </p>
+            <p>
+            <label>Password:</label>
+                <input type="password" minlength="10" required="required">
+            </p>
+            <br>
+            <div class="submitButton">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+
+    <div class="pageFooter">
+        <footer>
+            <p><b>Created by: Umme Salma Gadriwala</b></p>
+        </footer>
+    </div>
+    </div>
+</body>
+</html>

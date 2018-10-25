@@ -106,6 +106,7 @@ input[type=submit], input[type=button] {
 /* form displayed as a table to line up all input fields */
 form {
     display: table;
+    border-spacing: 5px;
 }
 
 .forms p {

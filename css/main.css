@@ -139,6 +139,16 @@ form {
     text-align: center;
 }
 
+/* defining size of div element that displays the map */
+#mapId {
+    height: 500px; 
+    width: 800px;
+    border: 2px solid orangered;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* max-width style added inline to images to prevent over-stretch but also display well in small screen sizes */
 /* width set to 99.999% but not 100% to allow image to be centered */
 .image {

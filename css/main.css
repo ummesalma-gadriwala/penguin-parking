@@ -92,7 +92,7 @@ input[type=radio], input[type=checkbox] {
 }
 
 /* Submit button formatted to look nice */
-input[type=submit] {
+input[type=submit], input[type=button] {
     border: 5px orangered;
     padding: 5px 15px;
     cursor: pointer;
@@ -112,7 +112,7 @@ form {
     display: table-row;
 }
 
-label, input {
+.forms label, input {
     display: table-cell;
 }
 

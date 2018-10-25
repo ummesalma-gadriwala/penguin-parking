@@ -1,5 +1,7 @@
 function getLocation() {
     console.debug("Getting location");
+
+    // get coordinate input box elements to load the geolocation coordinates into them
     latitudeElement = document.getElementById("latCoord");
     longitudeElement = document.getElementById("longCoord");
     locationButton = document.getElementById("geoLocate");
@@ -38,7 +40,9 @@ function showError(error) {
 
     switch(error.code) {
         case error.PERMISSION_DENIED:
-            // if user denies permission, the location button is disabled
+            // if user denies permission, 
+            // the location button is disabled and 
+            // user is prompted to manually enter coordinates
             alert("User denied the request for Geolocation.\nPlease manually enter the location coordinates.");
             latitudeElement.value = "";
             longitudeElement.value = "";

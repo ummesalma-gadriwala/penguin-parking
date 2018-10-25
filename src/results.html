@@ -13,9 +13,9 @@
         integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
         crossorigin="">
     </script>
-    <script type="text/javascript" src="../js/results.js"></script> 
+    <script type="text/javascript" src="../js/map.js"></script> 
 </head>
-<body onload="initMap()">
+<body onload="searchResult()">
     <div class="everything">
     <div class="header">
         <h1>Penguin Parking Services 
@@ -35,31 +35,30 @@
             Parking spots near (43.256056, -79.869734)
         </h4>
         <table class="resultsTable">
-                <tr>
+            <tr>
                 <th>Name</th>
                 <th>Available Spots</th>
                 <th>Hourly Rate (C$)</th>
-                </tr>
-                <tr>
+            </tr>
+            <tr>
                 <td><a href="parking.html">Indigo</a></td>
                 <td>39</td>
                 <td>3</td>
-                </tr>
-                <tr>
+            </tr>
+            <tr>
                 <td><a href="error.html">King & James</a></td>
                 <td>0</td>
                 <td>7</td>
-                </tr>
-                <tr>
+            </tr>
+            <tr>
                 <td><a href="error.html">UPark</a></td>
                 <td>70</td>
                 <td>10</td>
-                </tr>
+            </tr>
         </table>
         <br>
 
-        <div id="mapId"></div>
-        <br>
+        <div id="mapId"></div> <br>
 
         <!-- <div>
             <img src="../media/parkingMap.JPG" alt="Parking Spot Map" class="image" style="max-width: 731px">    

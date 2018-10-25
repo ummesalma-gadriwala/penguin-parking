@@ -142,7 +142,7 @@ form {
 /* defining size of div element that displays the map */
 #mapId {
     height: 500px; 
-    width: 800px;
+    width: 99.999%;
     border: 2px solid orangered;
     display: block;
     margin-left: auto;

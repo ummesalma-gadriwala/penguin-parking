@@ -12,8 +12,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+        integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+        crossorigin="">
+    </script>
+    <script type="text/javascript" src="../js/map.js"></script> 
 </head>
-<body>
+<body onload="indigoParkingResult()">
     <div class="everything">
     <div class="header">
         <h1>Penguin Parking Services 
@@ -108,6 +116,7 @@
         Map:
     </h4>
 
+    <div id="mapId"></div> <br>
     <img src="../media/indigoMap.JPG" alt="Indigo Parking Map" style="max-width:600px;" class="image"> <br>
     <img src="../media/indigo.JPG" alt="Indigo Parking Location" style="max-width:600px;" class="image"> <br>
     </div>

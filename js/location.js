@@ -25,9 +25,12 @@ function showPosition(position) {
     longitudeElement = document.getElementById("longCoord");
     
     // display the lat, long coordinates in the textboxes on the screen
+    // make textboxes readonly after setting value
     console.debug("  Position: ", position.coords.latitude, position.coords.longitude);
     latitudeElement.value = position.coords.latitude;
     longitudeElement.value = position.coords.longitude;
+    latitudeElement.readOnly = true;
+    longitudeElement.readOnly = true;
 }
 
 function showError(error) {

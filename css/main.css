@@ -93,7 +93,6 @@ input[type=radio], input[type=checkbox] {
 
 /* Submit button formatted to look nice */
 input[type=submit], input[type=button] {
-    border: 5px orangered;
     padding: 5px 15px;
     cursor: pointer;
     border-radius: 5px;
@@ -211,4 +210,18 @@ footer {
     bottom: 0;
     width: 100%;
     height: 25px;  /* footer height */
+}
+
+/* CSS Validation for form input boxes using pseudoclasses for validity */
+input:valid {
+    border: 2px solid blue;
+}
+
+input:invalid {
+    border: 2px dashed red;
+}
+
+/* remove border from psuedo class from submit, button input */
+input[type=submit], input[type=button] {
+    border: hidden;
 }

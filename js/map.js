@@ -1,7 +1,3 @@
-function initMap() {
-    
-}
-
 function searchResult() {
     // initialize a map from the OpenStreet map instance
     console.debug("Initializing map");

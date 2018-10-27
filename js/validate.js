@@ -90,10 +90,6 @@ function validateUserRegistrationForm(form) {
     var numericRegExp = new RegExp("[0-9]");
     var specialRegExp = new RegExp("[!@#$%^&*,./-]");
 
-    console.debug("Uppercase:", !upperCaseRegExp.test(password))
-    console.debug("Numeric:", !numericRegExp.test(password))
-    console.debug("Special:", !specialRegExp.test(password))
-
     if (password.length < 8) {
         window.alert("Password must be at least 8 characters long.");
         return false;

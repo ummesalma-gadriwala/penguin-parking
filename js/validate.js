@@ -3,6 +3,29 @@ function validateUserRegistrationForm(form) {
 
     // Full name
     var fullName = form.fullName.value;
+    
+    // Username
+    var username = form.username.value;
+
+    // Date of Birth
+    var dateOfBirth = form.dateOfBirth.value;
+
+    // Email
+    var email = form.email.value;
+    
+    // Password
+    var password = form.password.value;
+    var passwordRetype = form.passwordRetype.value;
+
+    return validateFullName(fullName) 
+        && validateUsername(username) 
+        && validateDateOfBirth(dateOfBirth)
+        && validateEmail(email)
+        && validatePassword(password, passwordRetype);
+}
+
+function validateFullName(fullName) {
+    console.debug("Validating full name");
     // Full name format: First Last
     // From the start(^) of the string to the end($), 
     // there must be two sets of letters seperated by a single space, and
@@ -19,9 +42,12 @@ function validateUserRegistrationForm(form) {
         window.alert("Invalid name format.");
         return false;
     }
-    
-    // Username
-    var username = form.username.value;
+
+    return true;
+}
+
+function validateUsername(username) {
+    console.debug("Validating username");
     // Username format: username
     // From the start(^) of the string to the end($), 
     // there must be one string consisting of letters, numbers, '.', and '-'
@@ -40,10 +66,12 @@ function validateUserRegistrationForm(form) {
         return false;
     }
 
-    // Date of Birth
-    var dateOfBirth = form.dateOfBirth.value;
-    // Date of Birth format: yyyy-mm-dd
+    return true;
+}
 
+function validateDateOfBirth(dateOfBirth) {
+    console.debug("Validating date of birth");
+    // Date of Birth format: yyyy-mm-dd
     var dateOfBirthRegExp = new RegExp("^([12][0-9]{3}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01]))$");
 
     if (dateOfBirth === '') {
@@ -57,13 +85,15 @@ function validateUserRegistrationForm(form) {
         return false;
     }
 
-    // Email
-    var email = form.email.value;
+    return true;
+}
+
+function validateEmail(email) {
+    console.debug("Validating email");
     // Email format: xyz@domain.abc
     // xyz maybe alphabets, numbers or special characters.
     // domain 
     // abc is 2 or more alphabets only.
-
     var emailRegExp = new RegExp("^[A-z0-9.!#$%&'*+/=?^_`{|}~-]+[@][A-z0-9.-]+[.][A-z]{2,}$");
 
     if (email === '') {
@@ -77,8 +107,11 @@ function validateUserRegistrationForm(form) {
         return false;
     }
 
-    // Password
-    var password = form.password.value;
+    return true;
+}
+
+function validatePassword(password, passwordRetype) {
+    console.debug("Validating password");
     // Password format:
     // at least 8 characters
     // must contain at least one uppercase letter
@@ -100,6 +133,12 @@ function validateUserRegistrationForm(form) {
         !specialRegExp.test(password))
     {
         window.alert("Invalid password.");
+        return false;
+    }
+
+    // Test to see if password and password retype are the same
+    if (!(password === passwordRetype)) {
+        window.alert("Passwords do not match.");
         return false;
     }
 

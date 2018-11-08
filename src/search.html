@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" href="../media/favicon.png">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
     <script type="text/javascript" src="../js/location.js"></script> 
+    <script type="text/javascript" src="../js/validate.js"></script> 
 </head>
 <body>
     <div class="everything">
@@ -27,22 +28,22 @@
     <br>
     
     <div class="content">
-        <form action="results.html" method="POST" class="forms">
+        <form action="results.html" method="POST" class="forms" onsubmit="return validateSearchForm(this);">
             <p>
             <label>Start Date:</label>
-                <input type="date">
+                <input type="date" name="startDate" required="required">
             </p>
             <p>
             <label>Start Time:</label>
-                <input type="time">
+                <input type="time" name="startTime" required="required">
             </p>
             <p>
             <label>End Date:</label>
-                <input type="date">
+                <input type="date" name="endDate" required="required">
             </p>
             <p>
             <label>End Time:</label>
-                <input type="time">
+                <input type="time" name="endTime" required="required">
             </p>
             <p>
             <label>Maximum Hourly Rate:</label>
@@ -52,9 +53,9 @@
             <label>Location:</label>
                 <input type="button" value="Auto Detect Location" id="geoLocate" onclick="getLocation()"> <br>
                 Latitude:
-                    <input type="number" id="latCoord" min="-90" max="90" step="0.001"> <br>
+                    <input type="number" id="latCoord" min="-90" max="90" step="0.001" required="required"> <br>
                 Longitude:
-                    <input type="number" id="longCoord" min="-180" max="180" step="0.001">
+                    <input type="number" id="longCoord" min="-180" max="180" step="0.001" required="required">
             </p>
             <p>
             <label>Minimum Rating:</label>

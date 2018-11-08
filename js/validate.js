@@ -19,9 +19,43 @@ function validateUserRegistrationForm(form) {
 
     return validateFullName(fullName) 
         && validateUsername(username) 
-        && validateDateOfBirth(dateOfBirth)
+        && validateDate(dateOfBirth)
         && validateEmail(email)
         && validatePassword(password, passwordRetype);
+}
+
+function validateSearchForm(form) {
+    console.debug("Validating search form data");
+
+    // Start date
+    var startDate = form.startDate.value;
+
+    // Start time
+    var startTime = form.startTime.value;
+
+    // End date
+    var endDate = form.endDate.value;
+
+    // End time
+    var endTime = form.endTime.value;
+
+    // Latitude
+    var latitude = document.getElementById("latCoord").value;
+
+    // Longitude
+    var longitude = document.getElementById("latCoord").value;
+
+    // Payment
+    var payment = document.getElementsByName("payment");
+
+    return validateDate(startDate)
+        && validateDate(endDate)
+        && validateTime(startTime)
+        && validateTime(endTime)
+        && validateDateStartBeforeEnd(startDate, startTime, endDate, endTime)
+        && validateLatitude(latitude)
+        && validateLongitude(longitude)
+        && validateRadios(payment);
 }
 
 function validateFullName(fullName) {
@@ -69,19 +103,38 @@ function validateUsername(username) {
     return true;
 }
 
-function validateDateOfBirth(dateOfBirth) {
-    console.debug("Validating date of birth");
-    // Date of Birth format: yyyy-mm-dd
-    var dateOfBirthRegExp = new RegExp("^([12][0-9]{3}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01]))$");
+function validateDate(date) {
+    console.debug("Validating date");
+    // Date format: yyyy-mm-dd
+    var dateRegExp = new RegExp("^([12][0-9]{3}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01]))$");
 
-    if (dateOfBirth === '') {
-        window.alert("Enter a date of birth.");
+    if (date === '') {
+        window.alert("Enter a date.");
         return false;
     }
 
-    if (!dateOfBirthRegExp.test(dateOfBirth))
+    if (!dateRegExp.test(date))
     {
         window.alert("Invalid date format.");
+        return false;
+    }
+
+    return true;
+}
+
+function validateTime(time) {
+    console.debug("Validating time", time);
+
+    // Time format: hh:mm, military time
+    var timeRegExp = new RegExp("^(00|[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9])$");
+    if (time === '') {
+        window.alert("Enter a time.");
+        return false;
+    }
+
+    if (!timeRegExp.test(time))
+    {
+        window.alert("Invalid time format.");
         return false;
     }
 
@@ -140,6 +193,88 @@ function validatePassword(password, passwordRetype) {
     if (!(password === passwordRetype)) {
         window.alert("Passwords do not match.");
         return false;
+    }
+
+    return true;
+}
+
+function validateDateStartBeforeEnd(startDate, startTime, endDate, endTime) {
+    console.debug("Validating start date-time before end date-time", startTime);
+
+    // Slice date to get year, month and day
+    let year = startDate.slice(0,4);
+    let month = startDate.slice(5,7);
+    let day = startDate.slice(8,10);
+    let hour = startTime.slice(0,2);
+    let minutes = startTime.slice(3,5);
+    console.log(year, month, day, hour, minutes);
+    let start = new Date(year, month, day, hour, minutes);
+
+    year = endDate.slice(0,4);
+    month = endDate.slice(5,7);
+    day = endDate.slice(8,10);
+    hour = endTime.slice(0,2);
+    minutes = endTime.slice(3,5);
+    let end = new Date(year, month, day, hour, minutes);
+
+    if (end.valueOf() - start.valueOf() < 0) {
+        window.alert("Start date must be before end date.");
+        return false;
+    }
+
+    return true;
+}
+
+function validateLatitude(latitude) {
+    console.debug("Validating latitude coordinates");
+
+    // Latitude must be a value between -90 and 90.
+    if (latitude === '') {
+        window.alert("Enter latitude coordinates.");
+        return false;
+    }
+
+    let latitudeFloat = parseFloat(latitude);
+    if (!(-90 <= latitudeFloat && latitudeFloat <= 90)) {
+        window.alert("Enter valid latitude coordinates.")
+        return false;
+    }
+
+    return true;
+}
+
+function validateLongitude(longitude) {
+    console.debug("Validating longitude coordinates");
+
+    // Longitude must be a value between -180 and 180.
+    if (longitude === '') {
+        window.alert("Enter longitude coordinates.");
+        return false;
+    }
+
+    let longitudeFloat = parseFloat(longitude);
+    if (!(-180 <= longitudeFloat && longitudeFloat <= 180)) {
+        window.alert("Enter valid longitude coordinates.")
+        return false;
+    }
+
+    return true;
+}
+
+function validateRadios(radios) {
+    console.debug("Validating one radio is selected");
+
+    // ensure at least one radio button is checked;
+    let checkedCount = 0;
+    for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            checkedCount++;
+        }
+    }
+
+    if (checkedCount != 1) {
+       window.alert("Select one option.");
+       return false;   
     }
 
     return true;

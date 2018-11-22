@@ -71,6 +71,31 @@ body {
     background-color: darkblue;
 }
 
+.search {
+    display: flex;
+    float: right;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid black;
+    background-color: rgba(169, 169, 169, 0.658);;
+}
+
+.search button {
+    float: right;
+    margin-right: 2px;
+    font-size: 17px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.search select {
+    height: 27px;
+}
+
+.search input[type=text] {
+    height: 21px;
+}
+
 /* Use pretty Google font API for form elements */
 button, input, select, textarea {
     font-family : inherit;
@@ -82,7 +107,7 @@ textarea {
 }
 
 /* Form inputs fit browser window size */
-input {
+.forms input {
     width: 100%;
 }
 
@@ -213,11 +238,11 @@ footer {
 }
 
 /* CSS Validation for form input boxes using pseudoclasses for validity */
-input:valid {
+.forms input:valid {
     border: 2px solid blue;
 }
 
-input:invalid {
+.forms input:invalid {
     border: 2px dashed red;
 }
 

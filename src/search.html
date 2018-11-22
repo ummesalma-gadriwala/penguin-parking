@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="../media/favicon.png">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="../js/location.js"></script> 
     <script type="text/javascript" src="../js/validate.js"></script> 
 </head>
@@ -25,9 +26,26 @@
         <li><a href="submission.html">New Parking Space</a></li>
         <li><a href="error.html">Sign in</a></li>
     </ul> 
-    <br>
+    
     
     <div class="content">
+
+        <!-- Search by name and rating -->
+        <div class="search">
+            <form action="results.html" class="searchForm">
+                <input type="text" name="name" placeholder="Name..">
+                <select name="rating">
+                    <option value="" selected>Rating...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select> 
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <br>
         <form action="results.html" method="POST" class="forms" onsubmit="return validateSearchForm(this);">
             <p>
             <label>Start Date:</label>

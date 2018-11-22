@@ -21,22 +21,22 @@ VALUES
 ("Pheobe Buffay", "smellyCats", "6/22/1977", "pheobe.buffay@friends.com", "abcd");
 
 -- Parking Space
-INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longtitude, website, paymentOptions)
+INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions)
 VALUES
 ("Indigo", "well-lit, accessible", 10, 50, 43.2603029, -79.9214898, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 12);
-INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longtitude, website, paymentOptions)
+INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions)
 VALUES
 ("UPark", "ATM available", 12, 60, 43.2603029, -79.9214898, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 23);
-INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longtitude, website, paymentOptions)
+INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions)
 VALUES
 ("APark", "24/7 service", 14, 70, 43.2603029, -79.9214898, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 13);
-INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longtitude, website, paymentOptions)
+INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions)
 VALUES
 ("EPark", "covered parking", 16, 80, 43.2603029, -79.9214898, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 1);
-INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longtitude, website, paymentOptions)
+INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions)
 VALUES
 ("IPark", "valet service available", 18, 90, 43.2603029, -79.9214898, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 2);
-INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longtitude, website, paymentOptions)
+INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions)
 VALUES
 ("OPark", "no height restrictions", 20, 100, 43.2603029, -79.9214898, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 3);
 

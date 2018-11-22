@@ -16,8 +16,8 @@ CREATE TABLE parkingSpace (
     description TEXT,
     hourlyRate DECIMAL(13,2) NOT NULL,
     numberOfSpots SMALLINT NOT NULL,
-    latitude DECIMAL(3,13) NOT NULL,
-    longitude DECIMAL(3,13) NOT NULL,
+    latitude DECIMAL(10,8) NOT NULL,
+    longitude DECIMAL(11,8) NOT NULL,
     website VARCHAR(50) NOT NULL,
     paymentOptions SMALLINT NOT NULL,
     CONSTRAINT pk_parkingSpace PRIMARY KEY(id)

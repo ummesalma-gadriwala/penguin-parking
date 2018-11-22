@@ -3,19 +3,19 @@ use gadriwau;
 -- User
 INSERT INTO user(fullName, username, dateOfBirth, email, password)
 VALUES
-("Ross Geller", "weWereOnABreak", "6/22/1977", "ross.geller@friends.com", "abcd");
+("Ross Geller", "weWereOnABreak", "1977-06-22", "ross.geller@friends.com", "abcd");
 INSERT INTO user(fullName, username, dateOfBirth, email, password)
 VALUES
-("Monica Geller", "turkeyChef", "6/22/1977", "monica.geller@friends.com", "abcd");
+("Monica Geller", "turkeyChef", "1977-06-22", "monica.geller@friends.com", "abcd");
 INSERT INTO user(fullName, username, dateOfBirth, email, password)
 VALUES
-("Chandler Bing", "jobNotFound404", "6/22/1977", "chandler.bing@friends.com", "abcd");
+("Chandler Bing", "jobNotFound404", "1977-06-22", "chandler.bing@friends.com", "abcd");
 INSERT INTO user(fullName, username, dateOfBirth, email, password)
 VALUES
-("Joey Tribiani", "drakeRamoray", "6/22/1977", "joey.tribiani@friends.com", "abcd");
+("Joey Tribiani", "drakeRamoray", "1977-06-22", "joey.tribiani@friends.com", "abcd");
 INSERT INTO user(fullName, username, dateOfBirth, email, password)
 VALUES
-("Rachel Green", "fashionPassion", "6/22/1977", "rachel.green@friends.com", "abcd");
+("Rachel Green", "fashionPassion", "1977-06-22", "rachel.green@friends.com", "abcd");
 INSERT INTO user(fullName, username, dateOfBirth, email, password)
 VALUES
 ("Pheobe Buffay", "smellyCats", "6/22/1977", "pheobe.buffay@friends.com", "abcd");

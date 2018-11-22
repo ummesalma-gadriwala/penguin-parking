@@ -7,6 +7,7 @@ CREATE TABLE user (
     dateOfBirth date,
     email TEXT,
     password TINYTEXT NOT NULL,
+    UNIQUE (email),
     CONSTRAINT pk_user PRIMARY KEY(id)
 );
 
@@ -20,6 +21,7 @@ CREATE TABLE parkingSpace (
     longitude DECIMAL(11,8) NOT NULL,
     website TEXT NOT NULL,
     paymentOptions SMALLINT NOT NULL,
+    UNIQUE (website),
     CONSTRAINT pk_parkingSpace PRIMARY KEY(id)
 );
 

@@ -18,7 +18,7 @@ VALUES
 ("Rachel Green", "fashionPassion", "1977-06-22", "rachel.green@friends.com", "abcd");
 INSERT INTO user(fullName, username, dateOfBirth, email, password)
 VALUES
-("Pheobe Buffay", "smellyCats", "6/22/1977", "pheobe.buffay@friends.com", "abcd");
+("Pheobe Buffay", "smellyCats", "1977-06-22", "pheobe.buffay@friends.com", "abcd");
 
 -- Parking Space
 INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions)
@@ -44,19 +44,19 @@ VALUES
 -- Review
 INSERT INTO review (parkingID, userID, review, rating)
 VALUES
-(null, null, "clean and well-maintained", 4);
+(6, 6, "clean and well-maintained", 4);
 INSERT INTO review (parkingID, userID, review, rating)
 VALUES
-(null, null, "dirty and sticky", 1);
+(5, 5, "dirty and sticky", 1);
 INSERT INTO review (parkingID, userID, review, rating)
 VALUES
-(null, null, "we booked our spot ahead of time and were very happy with the service", 5);
+(4, 5, "we booked our spot ahead of time and were very happy with the service", 5);
 INSERT INTO review (parkingID, userID, review, rating)
 VALUES
-(null, null, "rude attendant who made inappropriate comments", 2);
+(3, 4, "rude attendant who made inappropriate comments", 2);
 INSERT INTO review (parkingID, userID, review, rating)
 VALUES
-(null, null, "very well connected to the city's main attractions", 5);
+(2, 1, "very well connected to the city's main attractions", 5);
 INSERT INTO review (parkingID, userID, review, rating)
 VALUES
-(null, null, "narrow tunnels makes going around the lot very risky", 3);
+(1, 2, "narrow tunnels makes going around the lot very risky", 3);

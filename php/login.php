@@ -8,8 +8,11 @@ if (isset($_POST['signin'])) {
             if (checkPassword($_POST['username'], $_POST['password'])) {
                 session_start();
                 $_SESSION['isLoggedIn'] = true;
+                $_SESSION['username'] = $_POST['username'];
                 header("Location: https://" + $_SERVER['HTTP_HOST'] + "signedin.php");
-                exit();
+                exit;
+            } else {
+                die("Incorrect username/password combination");
             }
         } else {
             echo 'alert("Enter username and password to sign in.")';
@@ -25,8 +28,10 @@ function checkPassword($username, $password) {
             `username` = :username and `password` = SHA2(CONCAT(:password, `salt`), 0)'
             );
     
-        $query->bindParam(':password', $password);
-        $query->bindParam(':username', $username);
+        $query->bindValue(':password', $password);
+        $query->bindValue(':username', $username);
+        
+        $query->execute();
 
         return $query->rowCount() === 1;
     } catch (PDOException $error) {

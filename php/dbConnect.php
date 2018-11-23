@@ -10,8 +10,10 @@ try {
                      $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "<p>Connected successfully</p>";
+    echo "Connected successfully";
+    $query = $conn->prepare ('SELECT * FROM user');
+    $query->execute();
 } catch (PDOException $e) {
-    echo "<p>Connection failed: ", $e->getMessage(), "</p>";
+    echo "Connection failed: ", $e->getMessage();
 }
 ?>

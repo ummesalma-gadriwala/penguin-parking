@@ -1,6 +1,6 @@
 <?php
 require("dbConnect.php"); // connect to database
-
+echo "are we here?";
 // if user has pressed the submit button
 if (isset($_POST['signin'])) {
     // if the username and password fields are not empty or null
@@ -8,6 +8,7 @@ if (isset($_POST['signin'])) {
         isset($_POST['password']) && $_POST['password'] !== '') {
             // if password input and database password match
             if (checkPassword($_POST['username'], $_POST['password'])) {
+                echo "Login successful.";
                 session_start();
                 $_SESSION['isLoggedIn'] = true;
                 $_SESSION['username'] = $_POST['username'];

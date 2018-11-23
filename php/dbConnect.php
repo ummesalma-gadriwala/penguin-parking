@@ -1,6 +1,6 @@
+<?php
 // Connect to MySQL database using PDO
 // Using PDO allows me to connect to any database (yayy!)
-<?php
 $serverName = "localhost";
 $username = "gadriwau";
 $password = "password";

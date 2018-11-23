@@ -1,6 +1,6 @@
-// Menu include file with HTML code for menu
 <?php
-    echo 
+// Menu include file with HTML code for menu
+echo 
     '<ul class="menu">
         <li><a href="search.php">Search</a></li>
         <li><a href="register.php">New User</a></li>

@@ -11,17 +11,9 @@
 <body>
     <div class="everything">
     <div class="header">
-        <h1>Penguin Parking Services 
-            <a href="index.html">
-            <img src="../media/penguin.png" alt="Penguin Parking Logo" class="logo">
-            </a>
-        </h1>        
-    </div><ul class="menu">
-        <li><a href="search.html">Search</a></li>
-        <li><a href="register.html">New User</a></li>
-        <li><a href="submission.html">New Parking Space</a></li>
-        <li><a href="error.html">Sign in</a></li>
-    </ul>
+        <?php include '../php/header.php';?>
+    </div>
+    <?php include '../php/menu.php'; ?>
     <br>
 
     <div class="content">
@@ -29,9 +21,7 @@
     </div>
     
     <div class="pageFooter">
-        <footer>
-            <p><b>Created by: Umme Salma Gadriwala</b></p>
-        </footer>
+        <?php include '../php/footer.php'; ?>
     </div>
     </div>
 </body>

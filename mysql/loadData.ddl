@@ -16,7 +16,7 @@ VALUES
 INSERT INTO user(fullName, username, dateOfBirth, email, passwordHash, salt)
 VALUES
 ("Rachel Green", "fashionPassion", "1977-06-22", "rachel.green@friends.com", "41C95A7BE21FDCF8A02966CBD657C5393A1DB330CDFC40A4AE86D848067BA8BE", "x4AKGk6jXy");
-INSERT INTO user(fullName, username, dateOfBirth, email, passwordHashHash, salt)
+INSERT INTO user(fullName, username, dateOfBirth, email, passwordHash, salt)
 VALUES
 ("Pheobe Buffay", "smellyCats", "1977-06-22", "pheobe.buffay@friends.com", "776FB84325E2B9A76CF940C5397CB267C622547BE2EA2675A9EA207B2A150BAF", "q5MH7ZM2Xy");
 

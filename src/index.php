@@ -15,7 +15,7 @@
     </div>
     <?php include '../php/menu.php'; ?>
     <br>
-
+    <?php include '../php/dbConnect.php'; ?>
     <div class="pageFooter">
         <?php include '../php/footer.php'; ?>
     </div>

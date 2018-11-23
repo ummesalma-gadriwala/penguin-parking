@@ -6,10 +6,13 @@ if (isset($_POST['signin'])) {
     if (isset($_POST['username']) && $_POST['username'] != '' &&
         isset($_POST['password']) && $_POST['password'] != '') {
             if (checkPassword($_POST['username'], $_POST['password'])) {
-                alert("Successful!");
+                session_start();
+                $_SESSION['isLoggedIn'] = true;
+                header("Location: https://" + $_SERVER['HTTP_HOST'] + "signedin.php");
+                exit();
             }
         } else {
-            alert("Enter username and password to sign in.");
+            echo 'alert("Enter username and password to sign in.")';
         }
 }
 

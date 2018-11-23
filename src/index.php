@@ -18,7 +18,7 @@
     <br>
 
     <div class="content">
-        <form name="userSignIn" action="signedin.php" method="POST" class="forms">
+        <form name="userSignIn" action="index.php" method="POST" class="forms">
             <p>
             <label>Username:</label>
                 <input type="text" name="username" required="required">

@@ -6,7 +6,7 @@ CREATE TABLE user (
     username VARCHAR(20) NOT NULL,
     dateOfBirth date,
     email TEXT,
-    password TINYTEXT NOT NULL,
+    passwordHash TINYTEXT NOT NULL,
     UNIQUE (username),
     CONSTRAINT pk_user PRIMARY KEY(id)
 );

@@ -25,18 +25,36 @@ if (isset($_POST['signin'])) {
 
 function checkPassword($username, $password) {
     try {
-        $query = $conn->prepare(
-            'SELECT * FROM user
+        // get salt
+        $saltQuery = $conn->prepare(
+            'SELECT salt FROM user
             WHERE
-            username = :username and passwordHash = SHA2(CONCAT(:passwordAttempt, salt), 0)'
+            username = :username'
             );
-    
-        $query->bindValue(':passwordAttempt', $password);
-        $query->bindValue(':username', $username);
-        
-        $query->execute();
 
-        return $query->rowCount() === 1;
+        $saltQuery->bindValue(':username', $username);        
+        $saltQuery->execute();
+
+
+        if ($saltQuery->rowCount() === 1) {
+            $query = $conn->prepare(
+                'SELECT * FROM user
+                WHERE
+                username = :username and passwordHash = :passwordHash'
+            );
+
+            $salt = $saltQuery['salt'];
+            $passwordHash = hash('sha256', $password.$salt);
+            $query->bindValue(':passwordHash', $passwordHash);
+            $query->bindValue(':username', $username);
+        
+            $query->execute();
+
+            return $query->rowCount() === 1;
+        } else {
+            // invalid username
+            return false;
+        }
     } catch (PDOException $error) {
         echo "Failed: ", $error->getMessage();
         return false;

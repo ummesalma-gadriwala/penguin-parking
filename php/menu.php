@@ -1,3 +1,4 @@
+// Menu include file with HTML code for menu
 <?php
     echo 
     '<ul class="menu">

@@ -1,3 +1,4 @@
+// Header include file to abstract out repetitive HTMl code from pages
  <?php
     echo 
     '<h1>Penguin Parking Services

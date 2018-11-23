@@ -3,10 +3,11 @@ use gadriwau;
 CREATE TABLE user (
     id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
     fullName VARCHAR(50) NOT NULL,
-    username VARCHAR(20) NOT NULL,
+    username VARCHAR(64) NOT NULL,
     dateOfBirth date,
     email TEXT,
     passwordHash TINYTEXT NOT NULL,
+    salt VARCHAR(64) NOT NULL,
     UNIQUE (username),
     CONSTRAINT pk_user PRIMARY KEY(id)
 );

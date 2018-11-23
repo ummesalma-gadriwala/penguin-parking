@@ -18,7 +18,7 @@
     <br>
 
     <div class="content">
-        <form action="search.html" method="POST" class="forms">
+        <form action="search.php" method="POST" class="forms">
             <p>
             <label>Name:</label>
                 <!-- Name must be a upper or lowercase alphabet 

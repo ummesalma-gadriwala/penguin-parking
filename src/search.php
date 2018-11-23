@@ -20,7 +20,7 @@
     
     <div class="content">
         <br>
-        <form action="results.html" method="POST" class="forms" onsubmit="return validateSearchForm(this);">
+        <form action="results.php" method="POST" class="forms" onsubmit="return validateSearchForm(this);">
             <p>
             <label>Start Date:</label>
                 <input type="date" name="startDate" required="required">

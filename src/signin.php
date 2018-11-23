@@ -17,7 +17,7 @@
     <br>
 
     <div class="content">
-        <form name="userSignIn" action="search.html" method="POST" class="forms">
+        <form name="userSignIn" action="search.php" method="POST" class="forms">
             <p>
             <label>Username:</label>
                 <input type="text" name="username" required="required">

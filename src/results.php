@@ -35,17 +35,17 @@
                 <th>Hourly Rate (C$)</th>
             </tr>
             <tr>
-                <td><a href="parking.html">Indigo</a></td>
+                <td><a href="parking.php">Indigo</a></td>
                 <td>39</td>
                 <td>3</td>
             </tr>
             <tr>
-                <td><a href="error.html">King & James</a></td>
+                <td><a href="error.php">King & James</a></td>
                 <td>0</td>
                 <td>7</td>
             </tr>
             <tr>
-                <td><a href="error.html">UPark</a></td>
+                <td><a href="error.php">UPark</a></td>
                 <td>70</td>
                 <td>10</td>
             </tr>

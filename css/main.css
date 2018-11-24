@@ -71,10 +71,6 @@ body {
     background-color: darkblue;
 }
 
-.signout {
-    float: right;
-}
-
 /* Use pretty Google font API for form elements */
 button, input, select, textarea {
     font-family : inherit;
@@ -225,7 +221,7 @@ footer {
     border: 2px dashed red;
 }
 
-/* remove border from psuedo class from submit, button input */
+/* remove border from valid/invalid psuedo class from submit, button input */
 input[type=submit], input[type=button] {
     border: hidden;
 }

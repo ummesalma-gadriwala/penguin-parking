@@ -22,12 +22,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
         <?php include '../php/header.php';?>
     </div>
     <?php include '../php/menu.php'; ?>
-    
-    <div class="signout">
-    <form action="index.php" method="POST" class="forms">
-        <input type="submit" value="Sign Out" name="signout"> <br>
-    </form>
-    </div>
+
     <p>
     Welcome!
     </p>

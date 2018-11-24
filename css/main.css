@@ -71,29 +71,8 @@ body {
     background-color: darkblue;
 }
 
-.search {
-    display: flex;
+.signout {
     float: right;
-    padding: 0;
-    overflow: hidden;
-    border: 1px solid black;
-    background-color: rgba(169, 169, 169, 0.658);;
-}
-
-.search button {
-    float: right;
-    margin-right: 2px;
-    font-size: 17px;
-    border: 1px solid black;
-    cursor: pointer;
-}
-
-.search select {
-    height: 27px;
-}
-
-.search input[type=text] {
-    height: 21px;
 }
 
 /* Use pretty Google font API for form elements */

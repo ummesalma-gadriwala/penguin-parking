@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
-include('../php/logout.php');
 session_start();
+include('../php/logout.php');
 if (!isset($_SESSION['isLoggedIn'])) {
     header("Location: http://" . $_SERVER['HTTP_HOST'] . "/index.php");
     exit();

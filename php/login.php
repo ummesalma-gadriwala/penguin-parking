@@ -8,7 +8,7 @@ if (isset($_POST['signin'])) {
     if (isset($_POST['username']) && $_POST['username'] !== '' &&
         isset($_POST['password']) && $_POST['password'] !== '') {
             // if password input and database password match
-            if (checkPassword($_POST['username'], $_POST['password'])) {
+            if (checkPassword($_POST['username'], $_POST['password'], $conn)) {
                 echo "Login successful.";
                 session_start();
                 $_SESSION['isLoggedIn'] = true;
@@ -25,40 +25,46 @@ if (isset($_POST['signin'])) {
 }
 
 
-function checkPassword($username, $password) {
+function checkPassword($username, $password, $conn) {
     echo "Checking password";
     try {
-        // get salt
-        $saltQuery = $conn->prepare(
-            'SELECT salt FROM user
+        $query = $conn->prepare(
+            'SELECT * FROM user
             WHERE
-            username = :username'
-            );
+            `username` = :username and `passwordHash` = SHA2(CONCAT(:password, `salt`'
+        );
+        // // get salt
+        // $saltQuery = $conn->prepare(
+        //     'SELECT salt FROM user
+        //     WHERE
+        //     username = :username'
+        //     );
 
-        $saltQuery->bindValue(':username', $username);        
-        $saltQuery->execute();
+        // $saltQuery->bindValue(':username', $username);        
+        // $saltQuery->execute();
 
-        if ($saltQuery->rowCount() === 1) {
-            $query = $conn->prepare(
-                'SELECT * FROM user
-                WHERE
-                username = :username and passwordHash = :passwordHash'
-            );
+        // if ($saltQuery->rowCount() === 1) {
+        //     $query = $conn->prepare(
+        //         'SELECT * FROM user
+        //         WHERE
+        //         username = :username and passwordHash = :passwordHash'
+        //     );
             
-            $salt = $saltQuery['salt'];
-            echo "$salt";
-            $passwordHash = hash('sha256', $password.$salt);
-            echo "$passwordHash";
-            $query->bindValue(':passwordHash', $passwordHash);
-            $query->bindValue(':username', $username);
+        //     $salt = $saltQuery['salt'];
+        //     echo "$salt";
+        //     $passwordHash = hash('sha256', $password.$salt);
+        //     echo "$passwordHash";
+        //     $query->bindValue(':passwordHash', $passwordHash);
+        $query->bindValue(':username', $username);
+        $query->bindValue(':password', $password);
         
-            $query->execute();
+        $query->execute();
 
-            return $query->rowCount() === 1;
-        } else {
-            // invalid username
-            return false;
-        }
+        return $query->rowCount() === 1;
+        // } else {
+        //     // invalid username
+        //     return false;
+        // }
     } catch (PDOException $error) {
         echo "Failed: ", $error->getMessage();
         return false;

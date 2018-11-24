@@ -1,12 +1,11 @@
 <?php
-// if user has pressed the submit button
+// if user has pressed the signout button
 if (isset($_POST['signout'])) {
-    // if the username and password fields are not empty or null
-    
     session_start();
-                unset($_SESSION['isLoggedIn']);
-                echo "Logout successful.";
-                exit();
-    
+    unset($_SESSION['isLoggedIn']);
+    unset($_SESSION['username']);
+    session_destroy();
+    echo "Logout successful.";
+    exit();
 }
 ?>

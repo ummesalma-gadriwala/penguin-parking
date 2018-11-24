@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <?php 
-if ($_SESSION['isLoggedIn']) {
+include('../php/logout.php');
+session_start();
+if (!isset($_SESSION['isLoggedIn'])) {
     header("Location: http://" . $_SERVER['HTTP_HOST'] . "/index.php");
     exit();
 }
-include('../php/logout.php');
 ?>
 <html>
 <head>
@@ -24,7 +25,7 @@ include('../php/logout.php');
     
     <div class="signout">
     <form action="index.php" method="POST" class="forms">
-        <input type="button" value="Sign Out" name="signout"> <br>
+        <input type="submit" value="Sign Out" name="signout"> <br>
     </form>
     </div>
     <p>

@@ -11,13 +11,13 @@ if (isset($_POST['signin'])) {
                 $_SESSION['isLoggedIn'] = true;
                 $_SESSION['username'] = $_POST['username'];
                 echo "Login successful.";
-                header("Location: http://" + $_SERVER['HTTP_HOST'] + "signedin.php");
-                exit;
+                header("Location: http://" . $_SERVER['HTTP_HOST'] . "/signedin.php");
+                exit();
             } else {
-                die("Incorrect username/password combination");
+                echo("Incorrect username/password combination");
             }
         } else {
-            die("Enter username/password to sign in.");
+            echo("Enter username/password to sign in.");
         }
 }
 

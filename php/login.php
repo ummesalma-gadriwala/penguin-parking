@@ -4,6 +4,7 @@ echo "are we here?";
 // if user has pressed the submit button
 if (isset($_POST['signin'])) {
     // if the username and password fields are not empty or null
+    echo "sign in button was pressed";
     if (isset($_POST['username']) && $_POST['username'] !== '' &&
         isset($_POST['password']) && $_POST['password'] !== '') {
             // if password input and database password match
@@ -25,6 +26,7 @@ if (isset($_POST['signin'])) {
 
 
 function checkPassword($username, $password) {
+    echo "Checking password";
     try {
         // get salt
         $saltQuery = $conn->prepare(
@@ -36,16 +38,17 @@ function checkPassword($username, $password) {
         $saltQuery->bindValue(':username', $username);        
         $saltQuery->execute();
 
-
         if ($saltQuery->rowCount() === 1) {
             $query = $conn->prepare(
                 'SELECT * FROM user
                 WHERE
                 username = :username and passwordHash = :passwordHash'
             );
-
+            
             $salt = $saltQuery['salt'];
+            echo "$salt";
             $passwordHash = hash('sha256', $password.$salt);
+            echo "$passwordHash";
             $query->bindValue(':passwordHash', $passwordHash);
             $query->bindValue(':username', $username);
         

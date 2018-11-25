@@ -20,18 +20,20 @@ if (isset($_POST['register'])) {
         try {
             // valid user information, add to database
             $stmt = $conn->prepare(
-                'INSERT INTO user(fullName, username, dateOfBirth, email, passwordHash)
+                'INSERT INTO user(fullName, username, dateOfBirth, email, passwordHash, salt)
                 VALUES
-                (:fullName, :username, :dateOfBirth, :email, :passwordHash)'
+                (:fullName, :username, :dateOfBirth, :email, :passwordHash, :salt)'
             );
 
-            $passwordHash = SHA2(CONCAT($password, generateSalt()), 0);
+            $salt = generateSalt();
+            $passwordHash = SHA2(CONCAT($password, $salt), 0);
             
             $stmt->bindValue(':fullName', $fullName);
             $stmt->bindValue(':username', $username);
             $stmt->bindValue(':dateOfBirth', $dateOfBirth);
             $stmt->bindValue(':email', $email);
             $stmt->bindValue(':passwordHash', $passwordHash);
+            $stmt->bindValue(':salt', $salt);
             
             $stmt->execute();
             

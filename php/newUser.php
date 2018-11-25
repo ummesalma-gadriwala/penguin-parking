@@ -11,11 +11,11 @@ if (isset($_POST['register'])) {
     $passwordRetype = $_POST["passwordRetype"];
     
     // validate user registration form input
-    if (validateName($fullName) &&
-        validateUsername($username) &&
-        validateDate($dateOfBirth) &&
-        validateEmail($email) &&
-        validatePassword($password, $passwordRetype)) {
+    // if (validateName($fullName) &&
+    //     validateUsername($username) &&
+    //     validateDate($dateOfBirth) &&
+    //     validateEmail($email) &&
+    //     validatePassword($password, $passwordRetype)) {
 
         try {
             // valid user information, add to database
@@ -40,9 +40,9 @@ if (isset($_POST['register'])) {
             echo "Error: ", $error->getMessage();
         }
 
-    } else {
-        echo "Invalid input data.";
-    }
+    // } else {
+    //     echo "Invalid input data.";
+    // }
 }
 
 function generateSalt(){ 

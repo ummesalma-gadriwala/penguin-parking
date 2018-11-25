@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include('../php/newUser.php'); ?>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -47,7 +48,7 @@
             </p>
             <br>
             <div class="submitButton">
-                <input type="submit" value="Register">
+                <input type="submit" name="register" value="Register">
             </div>
         </form>
     </div>

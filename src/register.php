@@ -19,7 +19,7 @@
     <br>
 
     <div class="content">
-        <form name="userRegistration" action="search.php" method="POST" class="forms" onsubmit="return validateUserRegistrationForm(this);">
+        <form name="userRegistration" action="register.php" method="POST" class="forms" onsubmit="return validateUserRegistrationForm(this);">
             <p>
             <label>Full Name:</label>
                 <input type="text" name="fullName" required="required" pattern="^[A-Za-z]+[ ][A-Za-z]+$">

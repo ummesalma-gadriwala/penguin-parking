@@ -4,7 +4,7 @@
     unset($_SESSION['username']);
     session_destroy();
     // echo "Logout successful.";
-    echo '<script type="text/javascript">alert("Logout successful.");</script>';
+    echo '<script type="text/javascript">window.alert("Logout successful.");</script>';
     header("Location: http://" . $_SERVER['HTTP_HOST'] . "/index.php");
     exit();
 ?>

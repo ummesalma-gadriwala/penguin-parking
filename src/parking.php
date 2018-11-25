@@ -51,9 +51,10 @@
     </p>
     <p>
         <b>Reviews:</b>
-        <form action="signin.php" class="reviewForm">
-            <input type="submit" value="Write a review">
+        <form action="parking.php" method="GET" class="reviewForm">
+            <input type="submit" name="reviewSubmit" value="Write a review">
         </form>
+        <?php include '../php/reviewForm.php'; ?>
         <table class="reviewsTable">
             <tr>
                 <td>ummesalma.g</td>

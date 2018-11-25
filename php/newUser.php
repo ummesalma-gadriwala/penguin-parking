@@ -47,6 +47,7 @@ if (isset($_POST['register'])) {
 
 function generateSalt(){ 
     // Generate an alphanumeric salt of length 10
+    echo "generating salt";
     $length = 10;
     $characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     $charsLength = strlen($characters) -1;

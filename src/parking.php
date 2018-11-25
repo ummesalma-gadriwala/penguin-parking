@@ -52,7 +52,7 @@
     <p>
         <b>Reviews:</b>
         <form action="signin.php" class="reviewForm">
-                <input type="submit" value="Write a review">
+            <input type="submit" value="Write a review">
         </form>
         <table class="reviewsTable">
             <tr>

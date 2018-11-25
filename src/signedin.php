@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php 
+// This page is only accessible if used is signed in
 session_start();
 if (!isset($_SESSION['isLoggedIn'])) {
     header("Location: http://" . $_SERVER['HTTP_HOST'] . "/index.php");

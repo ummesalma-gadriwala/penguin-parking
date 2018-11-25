@@ -9,9 +9,9 @@ if (isset($_GET["reviewSubmit"])) {
     echo
     '<form action="submission.php" method="POST" class="forms">
     <p>
-    <label>Description:</label>
+    <label>Review:</label>
         <!-- Maxlength specifies a maximum of 250 characters in the description -->
-        <textarea name="Description" rows="3" cols="30" maxlength="250"></textarea>
+        <textarea name="review" rows="3" cols="30" maxlength="250"></textarea>
     </p>
     <p>
     <label>Rating:</label>

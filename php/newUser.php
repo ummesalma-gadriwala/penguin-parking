@@ -2,6 +2,13 @@
 require_once("dbConnect.php"); // connect to database
 
 if (isset($_POST['register'])) {
+    // paramaters are set
+    if (isset($_POST['fullName']) &&
+        isset($_POST['username']) &&
+        isset($_POST['dateOfBirth']) &&
+        isset($_POST['email']) &&
+        isset($_POST['password']) &&
+        isset($_POST['passwordRetype'])) {
     // get parameters
     $fullName = $_POST["fullName"];
     $username = $_POST["username"];
@@ -45,6 +52,7 @@ if (isset($_POST['register'])) {
     } else {
         echo "Invalid input data.";
     }
+}
 }
 
 function generateSalt() { 

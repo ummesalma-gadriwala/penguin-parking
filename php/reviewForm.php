@@ -24,4 +24,56 @@ if (isset($_GET["reviewSubmit"])) {
     </div>
     </form>';
 }
+
+if (isset($_POST["addReview"])) {
+    // get parameters
+    if (isset($_POST["review"]) &&
+        isset($_POST["rating"])) {
+
+            $review = $_POST["review"];
+            $rating = $_POST["rating"];
+            $username = $_SESSION["username"];
+            $parkingID = $_SESSION["parkingID"];
+
+    // TODO: validate form input
+
+    try {
+        // valid data, add review to database
+
+        // find userID from username (username is unique)
+        $query = $conn->prepare(
+            'SELECT id FROM user
+            WHERE
+            `username` = :username'
+        );
+
+        $query->bindValue(':username', $username);
+        $query->execute();
+        $result = $stmt->fetch();
+
+        foreach ($result as $user) {
+            $userID = $user['id'];
+        }
+
+        $stmt = $conn->prepare(
+            'INSERT INTO review(parkingID, userID, review, rating)
+            VALUES
+            (:parkingID, :userID, :review, :rating)'
+        );
+
+        $salt = generateSalt();
+        
+        $stmt->bindValue(':parkingID', $parkingID);
+        $stmt->bindValue(':userID', $userID);
+        $stmt->bindValue(':review', $review);
+        $stmt->bindValue(':rating', $rating);
+        
+        $stmt->execute();
+        
+        echo "Review added!";
+    } catch (PDOException $error) {
+        echo "Error: ", $error->getMessage();
+    }
+}
+}
 ?>

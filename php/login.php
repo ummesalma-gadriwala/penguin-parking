@@ -10,14 +10,16 @@ if (isset($_POST['signin'])) {
                 session_start();
                 $_SESSION['isLoggedIn'] = true;
                 $_SESSION['username'] = $_POST['username'];
-                echo "Login successful.";
+                echo '<script type="text/javascript">alert("Login successful.");</script>';
+                // echo "Login successful.";
                 header("Location: http://" . $_SERVER['HTTP_HOST'] . "/signedin.php");
                 exit();
             } else {
-                echo("Incorrect username/password combination");
+                echo '<script type="text/javascript">alert("Incorrect username/password combination.");</script>';
+                // echo("Incorrect username/password combination");
             }
     } else {
-        echo("Enter username/password to sign in.");
+        echo '<script type="text/javascript">alert("Enter username/password to sign in.");</script>';
     }
 }
 

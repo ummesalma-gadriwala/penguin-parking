@@ -16,9 +16,9 @@ if (isset($_POST['signin'])) {
             } else {
                 echo("Incorrect username/password combination");
             }
-        } else {
-            echo("Enter username/password to sign in.");
-        }
+    } else {
+        echo("Enter username/password to sign in.");
+    }
 }
 
 

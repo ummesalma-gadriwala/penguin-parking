@@ -22,10 +22,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
     </div>
     <?php include '../php/menu.php'; ?>
 
-    <p>
-    Welcome!
-    </p>
-
+    Welcome <?php echo $_SESSION['username']; ?>!
+    
     <div class="pageFooter">
         <?php include '../php/footer.php'; ?>
     </div>

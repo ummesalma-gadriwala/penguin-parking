@@ -22,17 +22,17 @@ if (isset($_POST['register'])) {
             $stmt = $conn->prepare(
                 'INSERT INTO user(fullName, username, dateOfBirth, email, passwordHash, salt)
                 VALUES
-                (:fullName, :username, :dateOfBirth, :email, :passwordHash, :salt)'
+                (:fullName, :username, :dateOfBirth, :email, SHA2(CONCAT(:password, :salt)), :salt)'
             );
 
             $salt = generateSalt();
-            $passwordHash = SHA2(CONCAT($password, $salt), 0);
+            // $passwordHash = SHA2(CONCAT($password, $salt), 0);
             
             $stmt->bindValue(':fullName', $fullName);
             $stmt->bindValue(':username', $username);
             $stmt->bindValue(':dateOfBirth', $dateOfBirth);
             $stmt->bindValue(':email', $email);
-            $stmt->bindValue(':passwordHash', $passwordHash);
+            $stmt->bindValue(':password', $password);
             $stmt->bindValue(':salt', $salt);
             
             $stmt->execute();

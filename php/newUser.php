@@ -22,7 +22,7 @@ if (isset($_POST['register'])) {
             $stmt = $conn->prepare(
                 'INSERT INTO user(fullName, username, dateOfBirth, email, passwordHash, salt)
                 VALUES
-                (:fullName, :username, :dateOfBirth, :email, SHA2(CONCAT(:password, :salt)), :salt)'
+                (:fullName, :username, :dateOfBirth, :email, SHA2(CONCAT(:password, :salt), 0), :salt)'
             );
 
             $salt = generateSalt();

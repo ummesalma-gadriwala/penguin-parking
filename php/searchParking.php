@@ -9,8 +9,8 @@ if(isset($_POST['searchParking'])) {
     $longitude = $_POST["longitude"];
     $radius = $_POST["radius"];
     $rating = $_POST["rating"];
-
-    // validate input
+    echo "got parameters";
+    // TODO: validate input
 
     try {
         // valid input, run search

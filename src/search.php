@@ -33,9 +33,9 @@
             <label>Location:</label>
                 <input type="button" value="Auto Detect Location" id="geoLocate" onclick="getLocation()"> <br>
                 Latitude:
-                    <input type="number" name="latitude" id="latCoord" min="-90" max="90" step="0.001" required="required"> <br>
+                    <input type="number" name="latitude" id="latCoord" min="-90" max="90" step="0.001"> <br>
                 Longitude:
-                    <input type="number" name="longitude" id="longCoord" min="-180" max="180" step="0.001" required="required">
+                    <input type="number" name="longitude" id="longCoord" min="-180" max="180" step="0.001" >
             </p>
             <p>
             <label>Radius:</label>

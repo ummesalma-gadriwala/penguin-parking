@@ -71,9 +71,9 @@ include '../php/newParking.php';
             </p>
             <p>
             <label>Payment Options:</label>
-                <input type="checkbox" name="payment" value="Visa">Visa
-                <input type="checkbox" name="payment" value="Cash" checked="checked">Cash
-                <input type="checkbox" name="payment" value="Debit">Debit
+                <input type="checkbox" name="payment_list[]" value="Visa">Visa
+                <input type="checkbox" name="payment_list[]" value="Cash" checked="checked">Cash
+                <input type="checkbox" name="payment_list[]" value="Debit">Debit
             </p>
             <p>
             <label>Image:</label>

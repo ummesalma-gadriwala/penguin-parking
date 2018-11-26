@@ -4,12 +4,11 @@ require_once("dbConnect.php"); // connect to database
 if (isset($_POST['submitParking'])) {
     // paramaters are set
     if (isset($_POST['name']) &&
-        isset($_POST['description']) &&
         isset($_POST['rate']) &&
         isset($_POST['spots']) &&
         isset($_POST['latitude']) &&
         isset($_POST['longitude']) &&
-        isset($_POST['payment']) &&
+        isset($_POST['payment_list']) &&
         isset($_POST['website'])) {
     // get parameters
     $name = $_POST["name"];
@@ -18,7 +17,23 @@ if (isset($_POST['submitParking'])) {
     $spots = $_POST["spots"];
     $latitude = $_POST["latitude"];
     $longitude = $_POST["longitude"];
-    $payment = $_POST["payment"];
+    $paymentList = [];
+    foreach ($_POST['payment_list'] as $payment) {
+        switch ($payment) {
+            case "Visa":
+                $paymentList["Visa"] = 1;
+                break;
+            case "Cash":
+                $paymentList["Cash"] = 2;
+                break;
+            case "Debit":
+                $paymentList["Debit"] = 3;
+                break;
+            default:
+                break;
+        }
+    }
+    
     $website = $_POST["website"];
     
     // validate user registration form input
@@ -27,6 +42,7 @@ if (isset($_POST['submitParking'])) {
         validateInteger($spots, 1, 100) &&
         validateFloat($latitude, -90, 90) &&
         validateFloat($longitude, -180, 180) &&
+        count($paymentList) !== 0 &&
         validateURL($website)) {
 
         try {
@@ -36,6 +52,8 @@ if (isset($_POST['submitParking'])) {
                 VALUES
                 (:name, :description, :rate, :spots, :latitude, :longitude, :website, :payment)'
             );
+
+            $payment = getPayment($paymentList);
 
             $stmt->bindValue(':name', $name);
             $stmt->bindValue(':description', $description);
@@ -58,6 +76,15 @@ if (isset($_POST['submitParking'])) {
         echo "Invalid input data.";
     }
 }
+}
+
+function getPayment($paymentList) {
+    $str = "";
+    foreach ($paymentList as $payment) {
+        $str .= $payment;
+    }
+
+    return $str;
 }
 
 function validateName($name) {

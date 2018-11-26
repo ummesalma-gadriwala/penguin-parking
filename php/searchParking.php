@@ -15,7 +15,7 @@ if(isset($_POST['searchParking'])) {
     try {
         // valid input, run search
         $query = $conn->prepare(
-            'SELECT name, hourlyRate, numberOfSpots FROM parkingSpace pS
+            'SELECT id, name, hourlyRate, numberOfSpots FROM parkingSpace pS
             WHERE
                 `name` = :name OR 
                 `hourlyRate` <= :rate OR 
@@ -28,7 +28,7 @@ if(isset($_POST['searchParking'])) {
         );
 
         $query->bindValue(':name', $name);
-        $query->bindValue(':hourlyRate', $hourlyRate);
+        $query->bindValue(':rate', $hourlyRate);
         $query->bindValue(':latitude', $latitude);
         $query->bindValue(':longitude', $longitude);
         $query->bindValue(':rating', $rating);
@@ -38,7 +38,13 @@ if(isset($_POST['searchParking'])) {
         $result = $query->fetchAll();
         
         echo "search completed.";
-        header("Location: http://" . $_SERVER['HTTP_HOST'] . "/results.php");
+        foreach ($result as $parking) {
+            $name = $parking['name'];
+            $hourlyRate = $parking['hourlyRate'];
+            $numberOfSpots = $parking['numberOfSpots'];
+            echo "$name";
+        }
+        // header("Location: http://" . $_SERVER['HTTP_HOST'] . "/results.php");
         exit();
     } catch (PDOException $error) {
         echo "Error: ", $error->getMessage();

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include '../php/searchParking.php'; ?>
 <html>
 <head>
     <meta charset="utf-8" />

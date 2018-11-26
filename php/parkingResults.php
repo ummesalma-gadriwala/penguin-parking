@@ -8,13 +8,13 @@ echo '<table class="resultsTable">
     <th>Hourly Rate (C$)</th>
 </tr>';
 
-foreach ($results as $parking) {
+foreach ($result as $parking) {
     $name = $parking['name'];
     $hourlyRate = $parking['hourlyRate'];
     $numberOfSpots = $parking['numberOfSpots'];
 
     echo '<tr>
-        <td><a href="parking.php">Indigo</a></td>
+        <td><a href="parking.php">$name</a></td>
         <td>$numberOfSpots</td>
         <td>$hourlyRate</td>
         </tr>';

@@ -20,34 +20,26 @@
     
     <div class="content">
         <br>
-        <form action="results.php" method="POST" class="forms" onsubmit="return validateSearchForm(this);">
+        <form action="search.php" method="POST" class="forms" onsubmit="return validateSearchForm(this);">
             <p>
-            <label>Start Date:</label>
-                <input type="date" name="startDate" required="required">
-            </p>
-            <p>
-            <label>Start Time:</label>
-                <input type="time" name="startTime" required="required">
-            </p>
-            <p>
-            <label>End Date:</label>
-                <input type="date" name="endDate" required="required">
-            </p>
-            <p>
-            <label>End Time:</label>
-                <input type="time" name="endTime" required="required">
+            <label>Name</label>
+                <input type="text" name="name">
             </p>
             <p>
             <label>Maximum Hourly Rate:</label>
-                <input type="number" min="1" max="50" value="50">
+                <input type="number" name="rate" min="1" max="50" value="50">
             </p>
             <p>
             <label>Location:</label>
                 <input type="button" value="Auto Detect Location" id="geoLocate" onclick="getLocation()"> <br>
                 Latitude:
-                    <input type="number" id="latCoord" min="-90" max="90" step="0.001" required="required"> <br>
+                    <input type="number" name="latitude" id="latCoord" min="-90" max="90" step="0.001" required="required"> <br>
                 Longitude:
-                    <input type="number" id="longCoord" min="-180" max="180" step="0.001" required="required">
+                    <input type="number" name="longitude" id="longCoord" min="-180" max="180" step="0.001" required="required">
+            </p>
+            <p>
+            <label>Radius:</label>
+                <input type="number" name="radius" min="1" max="50" value="50">
             </p>
             <p>
             <label>Minimum Rating:</label>
@@ -60,15 +52,15 @@
                     <option value="5">5</option>
                 </select> 
             </p>
-            <p>
+            <!-- <p>
             <label>Payment Method:</label>
                 <input type="radio" name="payment" value="Visa">Visa
                 <input type="radio" name="payment" value="Cash" checked="checked">Cash
                 <input type="radio" name="payment" value="Debit">Debit
-            </p>
+            </p> -->
             <br>
             <div class="submitButton">
-                <input type="submit" value="Search">
+                <input type="submit" name="searchParking" value="Search">
             </div>
         </form>
     </div>

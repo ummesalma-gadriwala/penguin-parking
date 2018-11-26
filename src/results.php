@@ -25,31 +25,7 @@
     <br>
 
     <div class="content">
-        <h4>
-            Parking spots near (43.256056, -79.869734)
-        </h4>
-        <table class="resultsTable">
-            <tr>
-                <th>Name</th>
-                <th>Available Spots</th>
-                <th>Hourly Rate (C$)</th>
-            </tr>
-            <tr>
-                <td><a href="parking.php">Indigo</a></td>
-                <td>39</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td><a href="error.php">King & James</a></td>
-                <td>0</td>
-                <td>7</td>
-            </tr>
-            <tr>
-                <td><a href="error.php">UPark</a></td>
-                <td>70</td>
-                <td>10</td>
-            </tr>
-        </table>
+        <?php include '../php/parkingResults.php' ?>
         <br>
 
         <div id="mapId"></div> <br>

@@ -22,7 +22,7 @@ VALUES
 ("Pheobe Buffay", "smellyCats", "1977-06-22", "pheobe.buffay@friends.com", "776FB84325E2B9A76CF940C5397CB267C622547BE2EA2675A9EA207B2A150BAF", "q5MH7ZM2Xy");
 
 -- Parking Space
-INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions)
+INSERT INTO parkingSpace(name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions)
 VALUES
 ("Indigo", "well-lit, accessible", 10, 50, 43.2603029, -79.9214898, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 12);
 INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions)

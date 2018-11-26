@@ -6,6 +6,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     header("Location: http://" . $_SERVER['HTTP_HOST'] . "/index.php");
     exit();
 }
+include '../php/newParking.php';
 ?>
 <html>
 <head>
@@ -31,31 +32,31 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <label>Name:</label>
                 <!-- Name must be a upper or lowercase alphabet 
                     followed by a series of alphabets or spaces -->
-                <input type="text" required="required" pattern="[A-Za-z][A-Za-z ]*">
+                <input type="text" name="name" required="required" pattern="[A-Za-z][A-Za-z ]*">
             </p>
             <p>
             <label>Description:</label>
                 <!-- Maxlength specifies a maximum of 250 characters in the description -->
-                <textarea name="Description" rows="3" cols="30" maxlength="250"></textarea>
+                <textarea name="description" rows="3" cols="30" maxlength="250"></textarea>
             </p>
             <p>
             <label>Hourly Rate (CAD):</label>
                 <!-- Default value of $50 -->
-                <input type="number" min="1" max="50" value="50" required="required">
+                <input type="number" name="rate" min="1" max="50" value="50" required="required">
             </p>
             <p>
             <label>Number of spots:</label>
                 <!-- Default value of 100 spots -->
-                <input type="number" min="1" max="100" value="100">
+                <input type="number" name="spots" min="1" max="100" value="100">
             </p>
             <p>
             <label>Location:</label>
                 <!-- Autodetect location and populate input box or manually enter a numeric value in the range -->
                 <input type="button" value="Auto Detect Location" id="geoLocate" onclick="getLocation()"> <br>
                 Latitude:
-                    <input type="number" id="latCoord" min="-90" max="90" step="0.001" required="required"> <br>
+                    <input type="number" name="latitude" id="latCoord" min="-90" max="90" step="0.001" required="required"> <br>
                 Longitude:
-                    <input type="number" id="longCoord" min="-180" max="180" step="0.001" required="required">
+                    <input type="number" name="longitude" id="longCoord" min="-180" max="180" step="0.001" required="required">
             </p>
             <!-- <p> -->
             <!-- <label>Rating:</label> -->
@@ -66,7 +67,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
             <label>Website:</label>
                 <!-- Specifying the type as URL automatically ensures the input is a well-formatted url 
                 The https:// value hints the user about the required URL format. -->
-                <input type="url" placeholder="https://" required="required">
+                <input type="url" name="website" placeholder="https://" required="required">
             </p>
             <p>
             <label>Payment Options:</label>
@@ -82,7 +83,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
 
             <br>
             <div class="submitButton">
-                <input type="submit" value="Submit">
+                <input type="submit" name="submitParking" value="Submit">
             </div>
         </form>
     </div>

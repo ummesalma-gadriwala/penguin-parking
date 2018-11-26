@@ -88,7 +88,7 @@ function getPayment($paymentList) {
 }
 
 function validateName($name) {
-    $pattern = '/^[A-Za-z]+[ ][A-Za-z]+$/';
+    $pattern = '/^[A-Za-z]+$/';
 
     return preg_match($pattern, $name) === 1;
 }

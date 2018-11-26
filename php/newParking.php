@@ -38,7 +38,7 @@ if (isset($_POST['submitParking'])) {
     
     // validate user registration form input
     if (validateName($name) &&
-        validateFloat($rate, 1, 50) &&
+        validateInteger($rate, 1, 50) &&
         validateInteger($spots, 1, 100) &&
         validateFloat($latitude, -90, 90) &&
         validateFloat($longitude, -180, 180) &&
@@ -101,7 +101,7 @@ function validateInteger($i, $min, $max) {
 }
 
 function validateFloat($f, $min, $max) {
-    $number = floatval($i, 10);
+    $number = floatval($f);
     return ($number !== 0 &&
         $number >= $min &&
         $number <= $max);

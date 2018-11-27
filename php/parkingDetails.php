@@ -5,16 +5,16 @@ try {
     // get details of parking from parkingSpace table
     $query = $conn->prepare(
         'SELECT * FROM parkingSpace
-        WHERE
-            `name` = :name'
+        WHERE `name` = :parkingName'
     );
 
-    $query->bindValue(':name', $parkingName);
+    $query->bindValue(':parkingName', $parkingName);
 
     $result = $query->fetch();
         
     // since name is unique, only one record is found
     foreach ($result as $parking) {
+        echo $parking['id'];
         $parkingID = $parking['id'];
         $description = $parking['description'];
         $hourlyRate = $parking['hourlyRate'];
@@ -27,7 +27,7 @@ try {
 
     $payment = getPaymentString($paymentOptions);
 
-    // storing parkingID as session variable to facilitate adding reviews
+    // storing parkingID as session variable to facilitate adding reviews later
     $_SESSION['parkingID'] = $parkingID;
 
     // get parking reviews from review table
@@ -36,7 +36,7 @@ try {
             (SELECT review.parkingID, review.review, review.rating, user.username
              FROM review, user
              WHERE review.userID = user.id
-        ) reviewsWithNames
+            ) reviewsWithNames
         WHERE
         reviewsWithNames.parkingID = :parkingID'
     );
@@ -77,8 +77,6 @@ try {
     echo "<table class='reviewsTable'>";
     displayReviewTable($result);
     echo "</table>";
-
-
 } catch (PDOException $error) {
     echo "Error: ", $error->getMessage();
 }

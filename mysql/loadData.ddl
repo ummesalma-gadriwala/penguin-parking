@@ -48,7 +48,7 @@ VALUES
 (6, 6, "clean and well-maintained", 4);
 INSERT INTO review (parkingID, userID, review, rating)
 VALUES
-(5, 5, "dirty and sticky", 1);
+(5, 3, "dirty and stinky", 1);
 INSERT INTO review (parkingID, userID, review, rating)
 VALUES
 (4, 5, "we booked our spot ahead of time and were very happy with the service", 5);

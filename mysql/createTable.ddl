@@ -27,12 +27,12 @@ CREATE TABLE parkingSpace (
 );
 
 CREATE TABLE review (
-    id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    -- assumption: each parking is reviewed by a user only once.
     parkingID SMALLINT UNSIGNED NOT NULL,
     userID SMALLINT UNSIGNED NOT NULL,
     review TEXT,
     rating TINYINT NOT NULL,
-    CONSTRAINT pk_review PRIMARY KEY(id),
+    CONSTRAINT pk_review PRIMARY KEY(parkingID, userID),
     CONSTRAINT fk_reviewsParking FOREIGN KEY (parkingID) REFERENCES parkingSpace(id) ON DELETE CASCADE,
     CONSTRAINT fk_reviewUser FOREIGN KEY (userID) REFERENCES user(id) ON DELETE CASCADE
 );

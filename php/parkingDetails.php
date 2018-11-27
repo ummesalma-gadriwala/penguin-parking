@@ -30,10 +30,11 @@ try {
     // get parking reviews from review table
     $query = $conn->prepare(
         // 'SELECT reviewsWithNames.review, reviewsWithNames.rating, reviewsWithNames.username FROM 
-            ('SELECT review.parkingID, review.review, review.rating, user.username
+            // (
+                'SELECT review.parkingID, review.review, review.rating, user.username
              FROM review, user
              WHERE review.userID = user.id'
-            ) reviewsWithNames
+            // ) reviewsWithNames
         // WHERE
         // reviewsWithNames.parkingID = :parkingID'
     );

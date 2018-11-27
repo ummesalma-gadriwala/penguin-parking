@@ -23,6 +23,3 @@ foreach ($result as $parking) {
 
 echo '</table>';
 ?>
-
-<!-- 18006670123 3874119 -->
-18663102355

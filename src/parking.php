@@ -31,84 +31,35 @@
     <br>
 
     <div class="content">
+    <?php include '../php/parkingDetails.php'; ?>
     <h3 class="parkingHeader">
-        <?php include '../php/menu.php'; ?>
-        <a href="https://ca.parkindigo.com/en/car-park/32-james-street-south" target="_blank">Indigo Parking Garage</a>
+        <?php
+        echo "<a href=$website target='_blank'>$parkingName</a>";
+        ?>
     </h3>
     <p>
-        <b>Description:</b> Disabled spots, no height restrictions, manned, partially lit
+        <b>Description:</b> <?php echo "$description"; ?>
     </p>
     <p>
-        <b>Rate:</b> C$3
+        <b>Rate:</b> C$<?php echo "$rate"; ?>
     </p>
     <p>
-        <b>Available spots:</b> 100
+        <b>Available spots:</b> <?php echo "$spots"; ?>
     </p>
     <p>
-        <b>Location: <code>43.256056, -79.869734</code></b>
+        <b>Location: <code><?php echo "$latitude, $longitude"; ?></code></b>
     </p>
     <p>
-        <b>Payment options:</b> Cash
+        <b>Payment options:</b> <?php echo "$payment"; ?>
     </p>
-    <p>
+    
         <b>Reviews:</b>
         <form action="parking.php" method="GET" class="reviewForm">
             <input type="submit" name="reviewSubmit" value="Write a review">
         </form>
         <?php include '../php/reviewForm.php'; ?>
         <table class="reviewsTable">
-            <tr>
-                <td>ummesalma.g</td>
-                <td>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <p class="review">
-                    The parking space was clean and well-maintained.
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td>tasnim</td>
-                <td>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <p class="review">
-                    The shuttles are very timely, the price is great, and the cold bottled water on return was great!
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td>mindy</td>
-                <td>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <p class="review">
-                    Quick and easy parking especially if you make reservations on their app!
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td>brad</td>
-                <td>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <p class="review">
-                    Don't even bother coming here. They are always full. For some reason, even when they're full, you can make a reservation online. If you make a reservation online, be sure it's at least one hour prior to your check in time.
-                    </p>
-                </td>
-            </tr>
+            <?php displayReviewTable($result); ?>
         </table>
 
     
@@ -118,7 +69,7 @@
     </h4>
 
     <div id="mapId"></div> <br>
-    <!-- <img src="../media/indigoMap.JPG" alt="Indigo Parking Map" style="max-width:600px;" class="image"> <br> -->
+    
     <img src="../media/indigo.JPG" alt="Indigo Parking Location" style="max-width:600px;" class="image"> <br>
     </div>
     

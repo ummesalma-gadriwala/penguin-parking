@@ -10,13 +10,13 @@ try {
 
     $query->bindValue(':parkingName', $parkingName);
     $query->execute();
-    $result = $query->fetch();
-        
+
     // since name is unique, only one record is found
+    $result = $query->fetch();
     $parkingID = $result['id'];
     $description = $result['description'];
-    $hourlyRate = $result['hourlyRate'];
-    $numberOfSpots = $result['numberOfSpots'];
+    $rate = $result['hourlyRate'];
+    $spots = $result['numberOfSpots'];
     $latitude = $result['latitude'];
     $longitude = $result['longitude'];
     $website = $result['website'];
@@ -29,18 +29,18 @@ try {
 
     // get parking reviews from review table
     $query = $conn->prepare(
-        'SELECT reviewsWithNames.review, reviewsWithNames.rating, reviewsWithNames.username FROM 
-            (SELECT review.parkingID, review.review, review.rating, user.username
+        // 'SELECT reviewsWithNames.review, reviewsWithNames.rating, reviewsWithNames.username FROM 
+            ('SELECT review.parkingID, review.review, review.rating, user.username
              FROM review, user
-             WHERE review.userID = user.id
+             WHERE review.userID = user.id'
             ) reviewsWithNames
-        WHERE
-        reviewsWithNames.parkingID = :parkingID'
+        // WHERE
+        // reviewsWithNames.parkingID = :parkingID'
     );
 
     $query->bindValue(':parkingID', $parkingID);
     $query->execute;
-    $result = $query->fetch();
+    $result = $query->fetchAll();
 
     // populate page display
     // parking name in header
@@ -78,9 +78,6 @@ try {
     echo "Error: ", $error->getMessage();
 }
 
-
-
-
 function getPaymentString($paymentOptions) {
     $payment = "";
     $length = strlen( $paymentOptions );
@@ -106,7 +103,7 @@ function getPaymentString($paymentOptions) {
 
 function displayReviewTable($result) {
     foreach ($result as $review) {
-        $review = $review['review'];
+        $description = $review['review'];
         $rating = intval($review['rating'], 10);
         $username = $review['username'];
 
@@ -122,7 +119,7 @@ function displayReviewTable($result) {
             echo "<span class='fa fa-star'></span>";
         }
         
-        echo "<p class='review'>$review</p>
+        echo "<p class='review'>$description</p>
                 </td>
             </tr>";
     }

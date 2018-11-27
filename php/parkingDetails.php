@@ -9,21 +9,18 @@ try {
     );
 
     $query->bindValue(':parkingName', $parkingName);
-
+    $query->execute();
     $result = $query->fetch();
         
     // since name is unique, only one record is found
-    foreach ($result as $parking) {
-        echo $parking['id'];
-        $parkingID = $parking['id'];
-        $description = $parking['description'];
-        $hourlyRate = $parking['hourlyRate'];
-        $numberOfSpots = $parking['numberOfSpots'];
-        $latitude = $parking['latitude'];
-        $longitude = $parking['longitude'];
-        $website = $parking['website'];
-        $paymentOptions = $parking['paymentOptions'];
-    }
+    $parkingID = $result['id'];
+    $description = $result['description'];
+    $hourlyRate = $result['hourlyRate'];
+    $numberOfSpots = $result['numberOfSpots'];
+    $latitude = $result['latitude'];
+    $longitude = $result['longitude'];
+    $website = $result['website'];
+    $paymentOptions = $result['paymentOptions'];
 
     $payment = getPaymentString($paymentOptions);
 
@@ -42,7 +39,7 @@ try {
     );
 
     $query->bindValue(':parkingID', $parkingID);
-
+    $query->execute;
     $result = $query->fetch();
 
     // populate page display
@@ -104,7 +101,7 @@ function getPaymentString($paymentOptions) {
         }
     }
 
-    return payment;
+    return $payment;
 }
 
 function displayReviewTable($result) {

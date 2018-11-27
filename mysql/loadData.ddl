@@ -1,7 +1,7 @@
 use gadriwau;
 
 -- User
---password: abcd
+-- abcd
 INSERT INTO user(fullName, username, dateOfBirth, email, passwordHash, salt)
 VALUES
 ("Ross Geller", "weWereOnABreak", "1977-06-22", "ross.geller@friends.com", "44CFAFBB7F02D981AA2110574F64E6CECEE62A95FC6A77AC2CC3714F4B477CD2", "JHzXQ1sUUn");

@@ -1,6 +1,6 @@
 <?php
 require_once("dbConnect.php");
-
+session_start();
 if(isset($_POST['searchParking'])) {
     // get parameters
     $name = $_POST["name"];

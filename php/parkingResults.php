@@ -14,12 +14,15 @@ foreach ($result as $parking) {
     $hourlyRate = $parking['hourlyRate'];
     $numberOfSpots = $parking['numberOfSpots'];
 
-    echo '<tr>
-        <td><a href="parking.php">$name</a></td>
+    echo "<tr>
+        <td><a href='parking.php?name=$name'>$name</a></td>
         <td>$numberOfSpots</td>
         <td>$hourlyRate</td>
-        </tr>';
+        </tr>";
 }
 
 echo '</table>';
 ?>
+
+<!-- 18006670123 3874119 -->
+18663102355

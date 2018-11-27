@@ -25,6 +25,7 @@
     <br>
 
     <div class="content">
+        <!-- This script displays a table of parking results. -->
         <?php include '../php/parkingResults.php' ?>
         <br>
 

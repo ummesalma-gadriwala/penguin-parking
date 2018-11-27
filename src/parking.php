@@ -32,6 +32,7 @@
 
     <div class="content">
     <h3 class="parkingHeader">
+        <?php include '../php/menu.php'; ?>
         <a href="https://ca.parkindigo.com/en/car-park/32-james-street-south" target="_blank">Indigo Parking Garage</a>
     </h3>
     <p>

@@ -1,8 +1,6 @@
 <?php
 $parkingName = $_GET['name'];
 require_once("dbConnect.php");
-
-
 try {
     // get details of parking from parkingSpace table
     $query = $conn->prepare(
@@ -47,41 +45,46 @@ try {
 
     $result = $query->fetch();
 
+    // populate page display
+    // parking name in header
+    echo "<h3 class='parkingHeader'>
+    <a href=$website target='_blank'>$parkingName</a>
+    </h3>";
+    // description, rate, spots, location and payment options
+    echo "<p>
+    <b>Description:</b> $description
+    </p>
+    <p>
+    <b>Rate:</b> C$$rate
+    </p>
+    <p>
+    <b>Available spots:</b> $spots
+    </p>
+    <p>
+    <b>Location: <code>$latitude, $longitude</code></b>
+    </p>
+    <p>
+    <b>Payment options:</b> $payment
+    </p>";
+
+    // review
+    echo "<b>Reviews:</b>";
+    echo "
+    <form action='parking.php' method='GET' class='reviewForm'>
+    <input type='submit' name='reviewSubmit' value='Write a review'>
+    </form>
+    <?php include '../php/reviewForm.php'; ?>";
+    echo "<table class='reviewsTable'>";
+    displayReviewTable($result);
+    echo "</table>";
+
+
 } catch (PDOException $error) {
     echo "Error: ", $error->getMessage();
 }
 
 
 
-// populate page display
-// parking name in header
-echo "<h3 class='parkingHeader'>
-        <a href=$website target='_blank'>$parkingName</a>
-      </h3>";
-// description, rate, spots, location and payment options
-echo "<p>
-      <b>Description:</b> $description
-      </p>
-      <p>
-      <b>Rate:</b> C$$rate
-      </p>
-      <p>
-      <b>Available spots:</b> $spots
-      </p>
-      <p>
-      <b>Location: <code>$latitude, $longitude</code></b>
-      </p>
-      <p>
-      <b>Payment options:</b> $payment
-      </p>";
-
-// review
-echo "<b>Reviews:</b>";
-echo "
-<form action='parking.php' method='GET' class='reviewForm'>
-    <input type='submit' name='reviewSubmit' value='Write a review'>
-</form>
-<?php include '../php/reviewForm.php'; ?>";
 
 function getPaymentString($paymentOptions) {
     $payment = "";

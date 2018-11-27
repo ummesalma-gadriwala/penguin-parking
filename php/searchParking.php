@@ -38,13 +38,15 @@ if(isset($_POST['searchParking'])) {
         $result = $query->fetchAll();
         
         echo "search completed.";
-        foreach ($result as $parking) {
-            $name = $parking['name'];
-            $hourlyRate = $parking['hourlyRate'];
-            $numberOfSpots = $parking['numberOfSpots'];
-            echo "$name";
-        }
-        // header("Location: http://" . $_SERVER['HTTP_HOST'] . "/results.php");
+        $_SESSION['parkingResult'] = $result;
+        // foreach ($result as $parking) {
+        //     $name = $parking['name'];
+        //     $hourlyRate = $parking['hourlyRate'];
+        //     $numberOfSpots = $parking['numberOfSpots'];
+        //     echo "$name";
+        // }
+        
+        header("Location: http://" . $_SERVER['HTTP_HOST'] . "/results.php");
         exit();
     } catch (PDOException $error) {
         echo "Error: ", $error->getMessage();

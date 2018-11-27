@@ -24,11 +24,11 @@
         <form action="search.php" method="POST" class="forms" onsubmit="return validateSearchForm(this);">
             <p>
             <label>Name</label>
-                <input type="text" name="name">
+                <input type="text" name="name" id="name">
             </p>
             <p>
             <label>Maximum Hourly Rate:</label>
-                <input type="number" name="rate" min="1" max="50" value="50">
+                <input type="number" name="rate" id="rate" min="1" max="50" value="50">
             </p>
             <p>
             <label>Location:</label>

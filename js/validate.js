@@ -27,17 +27,8 @@ function validateUserRegistrationForm(form) {
 function validateSearchForm(form) {
     console.debug("Validating search form data");
 
-    // Start date
-    var startDate = form.startDate.value;
-
-    // Start time
-    var startTime = form.startTime.value;
-
-    // End date
-    var endDate = form.endDate.value;
-
-    // End time
-    var endTime = form.endTime.value;
+    // Name
+    var name = document.getElementById("name").value;
 
     // Latitude
     var latitude = document.getElementById("latCoord").value;
@@ -45,17 +36,9 @@ function validateSearchForm(form) {
     // Longitude
     var longitude = document.getElementById("latCoord").value;
 
-    // Payment
-    var payment = document.getElementsByName("payment");
-
-    return validateDate(startDate)
-        && validateDate(endDate)
-        && validateTime(startTime)
-        && validateTime(endTime)
-        && validateDateStartBeforeEnd(startDate, startTime, endDate, endTime)
+    return validateFullName(name)
         && validateLatitude(latitude)
-        && validateLongitude(longitude)
-        && validateRadios(payment);
+        && validateLongitude(longitude);
 }
 
 function validateFullName(fullName) {

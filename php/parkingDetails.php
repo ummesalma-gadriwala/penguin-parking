@@ -29,18 +29,17 @@ try {
 
     // get parking reviews from review table
     $query = $conn->prepare(
-        // 'SELECT reviewsWithNames.review, reviewsWithNames.rating, reviewsWithNames.username FROM 
-            // (
-                'SELECT review.parkingID, review.review, review.rating, user.username
+        'SELECT reviewsWithNames.review, reviewsWithNames.rating, reviewsWithNames.username FROM 
+            (SELECT review.parkingID, review.review, review.rating, user.username
              FROM review, user
-             WHERE review.userID = user.id'
-            // ) reviewsWithNames
-        // WHERE
-        // reviewsWithNames.parkingID = :parkingID'
+             WHERE review.userID = user.id
+            ) reviewsWithNames
+        WHERE
+        reviewsWithNames.parkingID = :parkingID'
     );
 
     $query->bindValue(':parkingID', $parkingID);
-    $query->execute;
+    $query->execute();
     $result = $query->fetchAll();
 
     // populate page display

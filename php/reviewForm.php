@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_GET["reviewSubmit"])) {
-    $parkingName = $_GET['name'];
+    $parkingName = $_SESSION['parkingName'];
     // This form is only accessible if user is signed in
     if (!isset($_SESSION['isLoggedIn'])) {
         echo '<script type="text/javascript">window.alert("Sign in to add a review.");</script>';
@@ -9,7 +9,7 @@ if (isset($_GET["reviewSubmit"])) {
         exit();
     }
     echo
-    '<form action="submission.php" method="POST" class="forms">
+    '<form action="parking.php?name=$parkingName" method="POST" class="forms">
     <p>
     <label>Review:</label>
         <!-- Maxlength specifies a maximum of 250 characters in the description -->

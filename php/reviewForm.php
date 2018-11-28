@@ -1,10 +1,11 @@
 <?php
 session_start();
 if (isset($_GET["reviewSubmit"])) {
+    $parkingName = $_GET['name'];
     // This form is only accessible if user is signed in
     if (!isset($_SESSION['isLoggedIn'])) {
         echo '<script type="text/javascript">window.alert("Sign in to add a review.");</script>';
-        header("Location: http://" . $_SERVER['HTTP_HOST'] . "/parking.php");
+        header("Location: http://" . $_SERVER['HTTP_HOST'] . "/parking.php?name=" . $parkingName);
         exit();
     }
     echo
@@ -33,7 +34,7 @@ if (isset($_POST["addReview"])) {
         $review = $_POST["review"];
         $rating = $_POST["rating"];
         $username = $_SESSION["username"];
-        $parkingName = $_SESSION["parkingName"];
+        $parkingID = $_SESSION["parkingID"];
 
         // TODO: validate form input
         if (validateInteger($rating, 0, 5)) {
@@ -50,31 +51,13 @@ if (isset($_POST["addReview"])) {
                 $query->bindValue(':username', $username);
                 $query->execute();
                 $result = $query->fetch();
-        
-                foreach ($result as $user) {
-                    $userID = $user['id'];
-                }
-        
-                // find parkingID from parkingName (parkingName is unique)
-                $query = $conn->prepare(
-                    'SELECT id FROM parkingSpace
-                    WHERE
-                    `name` = :parkingName'
-                );
-        
-                $query->bindValue(':parkingName', $parkingName);
-                $query->execute();
-                $result = $query->fetch();
-        
-                foreach ($result as $parking) {
-                    $parkingID = $parking['id'];
-                }
+                $userID = $result['id'];
+                
         
                 // insert review into db
                 $stmt = $conn->prepare(
-                    'INSERT INTO review(parkingID, userID, review, rating)
-                    VALUES
-                    (:parkingID, :userID, :review, :rating)'
+                    'INSERT INTO review (parkingID, userID, review, rating)
+                    VALUES (:parkingID, :userID, :review, :rating)'
                 );
         
                 $stmt->bindValue(':parkingID', $parkingID);
@@ -85,6 +68,8 @@ if (isset($_POST["addReview"])) {
                 $stmt->execute();
                 
                 echo "Review added!";
+                header("Location: http://" . $_SERVER['HTTP_HOST'] . "/parking.php?name=" . $parkingName);
+                exit();
             } catch (PDOException $error) {
                 echo "Error: ", $error->getMessage();
             }

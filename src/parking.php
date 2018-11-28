@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include '../php/parkingDetails.php'; ?>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -32,7 +33,6 @@
     <br>
 
     <div class="content">
-    <?php include '../php/parkingDetails.php'; ?>
     <h3 class="parkingHeader">
         <?php
         echo "<a href=$website target='_blank'>$parkingName</a>";

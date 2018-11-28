@@ -21,6 +21,7 @@
         crossorigin="">
     </script>
     <script type="text/javascript" src="../js/map.js"></script> 
+    <script type="text/javascript" src="../js/reviewForm.js"></script> 
 </head>
 <body onload="indigoParkingResult()">
     <div class="everything">
@@ -52,11 +53,14 @@
     <p>
         <b>Payment options:</b> <?php echo "$payment"; ?>
     </p>
-    
+    <?php include '../php/reviewForm.php'; ?>
         <b>Reviews:</b>
+
+        
         <form action="parking.php" method="GET" class="reviewForm">
             <input type="submit" name="reviewSubmit" value="Write a review">
         </form>
+
         <?php include '../php/reviewForm.php'; ?>
         <table class="reviewsTable">
             <?php displayReviewTable($result); ?>

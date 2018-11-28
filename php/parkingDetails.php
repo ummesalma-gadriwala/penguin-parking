@@ -42,38 +42,6 @@ try {
     $query->execute();
     $result = $query->fetchAll();
 
-    // populate page display
-    // parking name in header
-    echo "<h3 class='parkingHeader'>
-    <a href=$website target='_blank'>$parkingName</a>
-    </h3>";
-    // description, rate, spots, location and payment options
-    echo "<p>
-    <b>Description:</b> $description
-    </p>
-    <p>
-    <b>Rate:</b> C$$rate
-    </p>
-    <p>
-    <b>Available spots:</b> $spots
-    </p>
-    <p>
-    <b>Location: <code>$latitude, $longitude</code></b>
-    </p>
-    <p>
-    <b>Payment options:</b> $payment
-    </p>";
-
-    // review
-    echo "<b>Reviews:</b>";
-    echo "
-    <form action='parking.php' method='GET' class='reviewForm'>
-    <input type='submit' name='reviewSubmit' value='Write a review'>
-    </form>
-    <?php include '../php/reviewForm.php'; ?>";
-    echo "<table class='reviewsTable'>";
-    displayReviewTable($result);
-    echo "</table>";
 } catch (PDOException $error) {
     echo "Error: ", $error->getMessage();
 }
@@ -111,12 +79,13 @@ function displayReviewTable($result) {
                 <td>$username</td>
                 <td>";
 
-        for ($i = 0; $i <= 5; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             if ($rating != 0) {
                 echo "<span class='fa fa-star checked'></span>";
                 $rating--;
+            } else {
+                echo "<span class='fa fa-star'></span>";
             }
-            echo "<span class='fa fa-star'></span>";
         }
         
         echo "<p class='review'>$description</p>

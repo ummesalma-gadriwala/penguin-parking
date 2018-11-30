@@ -35,10 +35,9 @@ function displayMap() {
     $latitude = $_SESSION["latitude"];
     $longitude = $_SESSION["longitude"];
 
-    // create an array of [latitude, longitude]
-    // first element of array is current location
+    // create an array of [name, latitude, longitude]
     // followed by locations of all parking results
-    $arr = [["name" => "current", "latitude" => floatval($latitude), "longitude" => floatval($longitude)]];
+    
     foreach ($result as $parking) {
         $name = $parking['name'];
         $latitude = $parking['latitude'];

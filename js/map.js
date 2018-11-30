@@ -2,11 +2,10 @@ function searchResult(arr) {
     // initialize a map from the OpenStreet map instance
     console.debug("Initializing map", arr);
 
-    // first element of the array is current location
-    currentLatitude = arr[0]["latitude"];
-    currentLongitude = arr[0]["longitude"];
-    // the map is centred at user's current location with a zoom level set at 16
-    var mymap = L.map('mapId').setView([currentLatitude, currentLongitude], 16);
+    latitude = arr[0]["latitude"];
+    longitude = arr[0]["longitude"];
+    // the map is centred at first parking location with a zoom level set at 16
+    var mymap = L.map('mapId').setView([latitude, longitude], 16);
     
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZ2Fkcml3YXUiLCJhIjoiY2pub3VjdGE3MDJuMTNwcXRkY21oejBscCJ9.BY26EUc35ApKv2sX0jcUHA', 
         {    
@@ -20,27 +19,16 @@ function searchResult(arr) {
     // create markers for the sample search results' lat, long coordinate and add them to the map
     console.debug("Display search results on a live map");
 
-    for (i in arr) {
+    for (i = 1; i < arr.length; i++) {
         parkingName = arr[i]["name"];
         latitude = arr[i]["latitude"];
         longitude = arr[i]["longitude"];
         console.log(name, latitude, longitude);
 
-        parking = L.marker([latitude, longitude]).addTo(mymap);
+        var marker = L.marker([latitude, longitude]).addTo(mymap);
         // add a pop up to the marker with a link that reroutes to the parking spot's page
-        parking.bindPopup('<a href="parking.php?' + parkingName + '"><b>' + parkingName + '</b></a><br>').openPopup();
+        marker.bindPopup('<a href="parking.php?name=' + parkingName + '"><b>' + parkingName + '</b></a><br>').openPopup();
     }
-
-    indigo = L.marker([43.257691, -79.870204]).addTo(mymap);
-    // add a pop up to the marker with a link that reroutes to the parking spot's page
-    indigo.bindPopup('<a href="parking.html"><b>Indigo</b></a><br>').openPopup();
-
-    // King and James and UPark route to error.html since their pages are not yet implemented
-    kingJames = L.marker([43.256922, -79.869390]).addTo(mymap);
-    kingJames.bindPopup('<a href="error.html"><b>King and James</b></a><br>').openPopup();
-
-    uPark = L.marker([43.254869, -79.868786]).addTo(mymap);
-    uPark.bindPopup('<a href="error.html"><b>UPark</b></a><br>').openPopup();
 }
 
 function indigoParkingResult() {

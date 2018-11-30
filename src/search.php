@@ -40,7 +40,7 @@
             </p>
             <p>
             <label>Radius:</label>
-                <input type="number" name="radius" min="1" max="50" value="50">
+                <input type="number" name="radius" min="0" max="50" value="50">
             </p>
             <p>
             <label>Minimum Rating:</label>

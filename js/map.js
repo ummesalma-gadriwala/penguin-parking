@@ -1,10 +1,10 @@
 function searchResult(arr) {
     // initialize a map from the OpenStreet map instance
-    console.debug("Initializing map");
+    console.debug("Initializing map", arr);
 
     // first element of the array is current location
-    currentLatitude = arr[0][0];
-    currentLongitude = arr[0][1];
+    currentLatitude = arr[0]["latitude"];
+    currentLongitude = arr[0]["longitude"];
     // the map is centred at user's current location with a zoom level set at 16
     var mymap = L.map('mapId').setView([currentLatitude, currentLongitude], 16);
     
@@ -21,14 +21,14 @@ function searchResult(arr) {
     console.debug("Display search results on a live map");
 
     for (i in arr) {
-        name = arr[i][0];
-        latitude = arr[i][1];
-        longitude = arr[i][2];
+        parkingName = arr[i]["name"];
+        latitude = arr[i]["latitude"];
+        longitude = arr[i]["longitude"];
         console.log(name, latitude, longitude);
 
         parking = L.marker([latitude, longitude]).addTo(mymap);
         // add a pop up to the marker with a link that reroutes to the parking spot's page
-        parking.bindPopup('<a href="parking.php?' + name + '"><b>' + name + '</b></a><br>').openPopup();
+        parking.bindPopup('<a href="parking.php?' + parkingName + '"><b>' + parkingName + '</b></a><br>').openPopup();
     }
 
     indigo = L.marker([43.257691, -79.870204]).addTo(mymap);

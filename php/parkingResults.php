@@ -38,13 +38,13 @@ function displayMap() {
     // create an array of [latitude, longitude]
     // first element of array is current location
     // followed by locations of all parking results
-    $arr = [[floatval($latitude), floatval($longitude)]];
+    $arr = [["name" => "current", "latitude" => floatval($latitude), "longitude" => floatval($longitude)]];
     foreach ($result as $parking) {
         $name = $parking['name'];
         $latitude = $parking['latitude'];
         $longitude = $parking['longitude'];
         
-        array_push($arr, [$name, floatval($latitude), floatval($longitude)]);
+        array_push($arr, ["name" => $name, "latitude" => floatval($latitude), "longitude" => floatval($longitude)]);
     }
     
     // pass this array to searchResult() in javascript

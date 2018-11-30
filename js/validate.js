@@ -49,15 +49,12 @@ function validateFullName(fullName) {
     // case insensitive.
     var fullNameRegExp = new RegExp("^[A-Za-z]+[ ][A-Za-z]+$");
     
-    if (fullName === '') {
-        window.alert("Enter a name.");
-        return false;
-    }
-
-    if (!fullNameRegExp.test(fullName))
-    {
-        window.alert("Invalid name format.");
-        return false;
+    if (fullName !== '') {
+        if (!fullNameRegExp.test(fullName))
+        {
+            window.alert("Invalid name format.");
+            return false;
+        }
     }
 
     return true;
@@ -212,15 +209,12 @@ function validateLatitude(latitude) {
     console.debug("Validating latitude coordinates");
 
     // Latitude must be a value between -90 and 90.
-    if (latitude === '') {
-        window.alert("Enter latitude coordinates.");
-        return false;
-    }
-
-    let latitudeFloat = parseFloat(latitude);
-    if (!(-90 <= latitudeFloat && latitudeFloat <= 90)) {
-        window.alert("Enter valid latitude coordinates.")
-        return false;
+    if (latitude !== '') {
+        let latitudeFloat = parseFloat(latitude);
+        if (!(-90 <= latitudeFloat && latitudeFloat <= 90)) {
+            window.alert("Enter valid latitude coordinates.")
+            return false;
+        }
     }
 
     return true;
@@ -231,16 +225,12 @@ function validateLongitude(longitude) {
 
     // Longitude must be a value between -180 and 180.
     if (longitude === '') {
-        window.alert("Enter longitude coordinates.");
-        return false;
+        let longitudeFloat = parseFloat(longitude);
+        if (!(-180 <= longitudeFloat && longitudeFloat <= 180)) {
+            window.alert("Enter valid longitude coordinates.")
+            return false;
+        }
     }
-
-    let longitudeFloat = parseFloat(longitude);
-    if (!(-180 <= longitudeFloat && longitudeFloat <= 180)) {
-        window.alert("Enter valid longitude coordinates.")
-        return false;
-    }
-
     return true;
 }
 

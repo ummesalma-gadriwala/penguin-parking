@@ -33,6 +33,21 @@ function displayTable() {
 function displayMap() {
     $result = $_SESSION['parkingResult'];
 
+    // create an array of [latitude, longitude]
+    // first element of array is current location
+    // followed by locations of all parking results
+    $latitude = $_SESSION["latitude"];
+    $longitude = $_SESSION["longitude"];
+    $arr = [[$latitude, $longitude]];
+    foreach ($result as $parking) {
+        $latitude = $parking['name'];
+        $longitude = $parking['hourlyRate'];
+        
+        array_push($arr, [$latitude, $longitude]);
+    }
+    
+    // pass this array to searchResult() in javascript
+    echo "onload='searchResult($arr)'";
 }
 
 ?>

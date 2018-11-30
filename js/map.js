@@ -1,9 +1,11 @@
-function searchResult() {
+function searchResult(arr) {
     // initialize a map from the OpenStreet map instance
     console.debug("Initializing map");
 
-    // the map is centred at user's current location (hardcoded here) with a zoom level set at 16
-    var mymap = L.map('mapId').setView([43.257691, -79.870204], 16);
+    currentLatitude = arr[0][0];
+    currentLongitude = arr[0][1];
+    // the map is centred at user's current location with a zoom level set at 16
+    var mymap = L.map('mapId').setView([currentLatitude, currentLongitude], 16);
     
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZ2Fkcml3YXUiLCJhIjoiY2pub3VjdGE3MDJuMTNwcXRkY21oejBscCJ9.BY26EUc35ApKv2sX0jcUHA', 
         {    

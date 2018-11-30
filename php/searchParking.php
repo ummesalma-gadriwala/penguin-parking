@@ -21,6 +21,9 @@ if (isset($_POST['searchParking'])) {
             $addRate = false;
             $addLocation = false;
             $addRating = false;
+
+            $_SESSION["latitude"] = $_POST["latitude"];
+            $_SESSION["longitude"] = $_POST["longitude"];
         
             try {
                 // valid input, run search

@@ -17,7 +17,7 @@
     </script>
     <script type="text/javascript" src="../js/map.js"></script> 
 </head>
-<body onload="searchResult()">
+<body <?php displayMap(); ?>>
     <div class="everything">
     <div class="header">
         <?php include '../php/header.php';?>

@@ -40,14 +40,15 @@ function displayMap() {
     // followed by locations of all parking results
     $arr = [[floatval($latitude), floatval($longitude)]];
     foreach ($result as $parking) {
-        $latitude = $parking['name'];
-        $longitude = $parking['hourlyRate'];
+        $name = $parking['name'];
+        $latitude = $parking['latitude'];
+        $longitude = $parking['longitude'];
         
-        array_push($arr, [floatval($latitude), floatval($longitude)]);
+        array_push($arr, [$name, floatval($latitude), floatval($longitude)]);
     }
     
     // pass this array to searchResult() in javascript
-    echo "'searchResult($arr)'";
+    echo "'searchResult(",json_encode($arr),")'";
 }
 
 ?>

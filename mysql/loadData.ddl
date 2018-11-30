@@ -27,19 +27,19 @@ VALUES
 ("Indigo", "well-lit, accessible", 10, 50, 43.2603029, -79.9214898, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 12);
 INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions)
 VALUES
-("UPark", "ATM available", 12, 60, 43.2603029, -79.9214898, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 23);
+("UPark", "ATM available", 12, 60, 43.257691, -79.870204, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 23);
 INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions)
 VALUES
-("APark", "24/7 service", 14, 70, 43.2603029, -79.9214898, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 13);
+("APark", "24/7 service", 14, 70, 43.256922, -79.869390, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 13);
 INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions)
 VALUES
-("EPark", "covered parking", 16, 80, 43.2603029, -79.9214898, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 1);
+("EPark", "covered parking", 16, 80, 43.254869, -79.868786, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 1);
 INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions)
 VALUES
-("IPark", "valet service available", 18, 90, 43.2603029, -79.9214898, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 2);
+("IPark", "valet service available", 18, 90, 43.254869, -79.9214898, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 2);
 INSERT INTO parkingSpace (name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions)
 VALUES
-("OPark", "no height restrictions", 20, 100, 43.2603029, -79.9214898, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 3);
+("OPark", "no height restrictions", 20, 100, 43.2603029, -79.869390, "https://ca.parkindigo.com/en/car-park/32-james-street-south", 3);
 
 
 -- Review

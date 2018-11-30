@@ -45,7 +45,7 @@ function displayMap() {
         
         array_push($arr, [floatval($latitude), floatval($longitude)]);
     }
-    echo "$arr";
+    
     // pass this array to searchResult() in javascript
     echo "'searchResult($arr)'";
 }

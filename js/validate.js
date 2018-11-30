@@ -36,7 +36,7 @@ function validateSearchForm(form) {
     // Longitude
     var longitude = document.getElementById("latCoord").value;
 
-    return validateFullName(name)
+    return validateParkingName(name)
         && validateLatitude(latitude)
         && validateLongitude(longitude);
 }
@@ -48,6 +48,29 @@ function validateFullName(fullName) {
     // there must be two sets of letters seperated by a single space, and
     // case insensitive.
     var fullNameRegExp = new RegExp("^[A-Za-z]+[ ][A-Za-z]+$");
+    
+    if (fullName === '') {
+        window.alert("Enter name.");
+        return false;
+    }
+
+    if (!fullNameRegExp.test(fullName))
+    {
+        window.alert("Invalid name format.");
+        return false;
+    }
+    
+
+    return true;
+}
+
+function validateParkingName(fullName) {
+    console.debug("Validating full name");
+    // Full name format: First Last
+    // From the start(^) of the string to the end($), 
+    // there must be two sets of letters seperated by a single space, and
+    // case insensitive.
+    var fullNameRegExp = new RegExp("^[A-Za-z ]+$");
     
     if (fullName !== '') {
         if (!fullNameRegExp.test(fullName))

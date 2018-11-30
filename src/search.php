@@ -28,7 +28,7 @@
             </p>
             <p>
             <label>Maximum Hourly Rate:</label>
-                <input type="number" name="rate" id="rate" min="1" max="50" value="50">
+                <input type="number" name="rate" id="rate" min="0" max="50" value="0">
             </p>
             <p>
             <label>Location:</label>
@@ -40,7 +40,7 @@
             </p>
             <p>
             <label>Radius:</label>
-                <input type="number" name="radius" min="0" max="50" value="50">
+                <input type="number" name="radius" min="0" max="50" value="0">
             </p>
             <p>
             <label>Minimum Rating:</label>

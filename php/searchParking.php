@@ -11,12 +11,13 @@ if (isset($_POST['searchParking'])) {
     $rating = $_POST["rating"];
     echo "got parameters";
     // validate input
-    if ((isset($_POST['name']) && $_POST['name'] != "") ||
-        (isset($_POST['rate']) && $_POST['rate'] != "") ||
-        (isset($_POST['latitude']) && $_POST['latitude'] != "" &&
+    if (!(isset($_POST['name']) && $_POST['name'] != "") ||
+        !(isset($_POST['rate']) && $_POST['rate'] != "0") ||
+        !(isset($_POST['latitude']) && $_POST['latitude'] != "" &&
          isset($_POST['longitude']) && $_POST['longitude'] != "" &&
-         isset($_POST['radius']) && $_POST['radius'] != "") ||
-        (isset($_POST['rating']) && $_POST['rating'] != "")) {
+         isset($_POST['radius']) && $_POST['radius'] != "0") ||
+        !(isset($_POST['rating']) && $_POST['rating'] != "")) {
+            header("Location: http://" . $_SERVER['HTTP_HOST'] . "/search.php");
             echo '<script type="text/javascript">window.alert("Enter at least one parameter to search.");</script>';
             exit();
         }
@@ -34,14 +35,14 @@ if (isset($_POST['searchParking'])) {
             $addName = true;
         }
 
-        if (isset($_POST['rate']) && $_POST['rate'] != "") {
+        if (isset($_POST['rate']) && $_POST['rate'] != "0") {
             $searchQuery .= "`hourlyRate` = :rate AND ";
             $addRate = true;
         }
 
         if (isset($_POST['latitude']) && $_POST['latitude'] != "" &&
             isset($_POST['longitude']) && $_POST['longitude'] != "" &&
-            isset($_POST['radius']) && $_POST['radius'] != "" ) {
+            isset($_POST['radius']) && $_POST['radius'] != "0" ) {
             $searchQuery .= "(ABS(`latitude` - :latitude) <= :radius AND ABS(`longitude` - :longitude) <= :radius) AND ";
             $addLocation = true;
         }

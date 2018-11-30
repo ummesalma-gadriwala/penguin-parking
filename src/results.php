@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include '../php/parkingResults.php' ?>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -26,7 +27,7 @@
 
     <div class="content">
         <!-- This script displays a table of parking results. -->
-        <?php include '../php/parkingResults.php' ?>
+        <?php displayTable(); ?>
         <br>
 
         <div id="mapId"></div> <br>

@@ -247,7 +247,7 @@ function validateLongitude(longitude) {
     console.debug("Validating longitude coordinates");
 
     // Longitude must be a value between -180 and 180.
-    if (longitude === '') {
+    if (longitude !== '') {
         let longitudeFloat = parseFloat(longitude);
         if (!(-180 <= longitudeFloat && longitudeFloat <= 180)) {
             window.alert("Enter valid longitude coordinates.")

@@ -1,6 +1,6 @@
 function searchResult(arr) {
     // initialize a map from the OpenStreet map instance
-    console.debug("Initializing map");
+    console.debug("Initializing map", arr);
 
     currentLatitude = arr[0][0];
     currentLongitude = arr[0][1];

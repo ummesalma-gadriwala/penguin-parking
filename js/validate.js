@@ -221,7 +221,7 @@ function validateRadius(radius) {
     // Radius must be a value between 0 and 50.
     if (radius !== '') {
         let radiusInt = parseInt(radius);
-        if (!(0 <= radiusInt && radiusInt <= 0)) {
+        if (!(0 <= radiusInt && radiusInt <= 50)) {
             window.alert("Enter valid radius.")
             return false;
         }

@@ -37,7 +37,7 @@ function displayMap() {
 
     // create an array of [name, latitude, longitude]
     // followed by locations of all parking results
-    
+    $arr = [];
     foreach ($result as $parking) {
         $name = $parking['name'];
         $latitude = $parking['latitude'];

@@ -16,6 +16,8 @@ function searchResult(arr) {
         }
     ).addTo(mymap);
 
+    var bounds = L.LatLngBounds();
+
     // create markers for the sample search results' lat, long coordinate and add them to the map
     console.debug("Display search results on a live map");
 
@@ -25,10 +27,17 @@ function searchResult(arr) {
         longitude = arr[i]["longitude"];
         console.log(name, latitude, longitude);
 
-        var marker = L.marker([latitude, longitude]).addTo(mymap);
+        var infoWindow = L.popup().setContent('<a href="parking.php?name=' + parkingName + '"><b>' + parkingName + '</b></a><br>');
         // add a pop up to the marker with a link that reroutes to the parking spot's page
-        marker.bindPopup('<a href="parking.php?name=' + parkingName + '"><b>' + parkingName + '</b></a><br>').openPopup();
+        var marker = L.marker([latitude, longitude])
+                      .addTo(mymap)
+                      .bindPopup(infoWindow)
+                      .openPopup();
+
+        bounds.extend(marker.getLatLng());
     }
+
+    mymap.fitBounds(bounds);
 }
 
 function indigoParkingResult() {

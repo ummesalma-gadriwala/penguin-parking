@@ -16,7 +16,7 @@ if (isset($_POST['searchParking'])) {
         // valid input, run search
         $searchQuery = "SELECT * FROM parkingSpace pS WHERE ";
         if (isset($_POST['name']) && $_POST['name'] != "") {
-            $searchQuery .= "`name` = :name AND ";
+            $searchQuery .= "`name` LIKE :name AND ";
         }
 
         if (isset($_POST['rate']) && $_POST['rate'] != "") {

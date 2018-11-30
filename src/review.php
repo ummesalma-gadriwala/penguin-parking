@@ -5,7 +5,7 @@ session_start();
 $parkingName = $_SESSION['parkingName'];
 if (!isset($_SESSION['isLoggedIn'])) {
     if (isset($_SESSION['parkingName'])) {
-        header("Location: http://" . $_SERVER['HTTP_HOST'] . "/parking.php?name=" . $parkingName);
+        header("Location: http://" . $_SERVER['HTTP_HOST'] . "/parking.php");
     } else {
         header("Location: http://" . $_SERVER['HTTP_HOST'] . "/index.php");
     }
@@ -32,7 +32,7 @@ include '../php/reviewForm.php';
     
     <div class="content">
         <br>
-        <form action="parking.php?name=$parkingName" method="POST" class="forms">
+        <form action="" method="POST" class="forms">
         <p>
         <label>Review:</label>
             <!-- Maxlength specifies a maximum of 250 characters in the description -->

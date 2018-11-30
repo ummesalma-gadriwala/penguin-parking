@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<?php include '../php/parkingDetails.php'; ?>
+<?php 
+include '../php/parkingDetails.php';
+include '../php/submitReview.php'; 
+?>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -61,7 +64,6 @@
             <input type="submit" name="reviewSubmit" value="Write a review">
         </form>
 
-        <?php include '../php/reviewForm.php'; ?>
         <table class="reviewsTable">
             <?php displayReviewTable($result); ?>
         </table>

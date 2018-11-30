@@ -36,9 +36,13 @@ function validateSearchForm(form) {
     // Longitude
     var longitude = document.getElementById("latCoord").value;
 
+    // Radius
+    var radius = document.getElementById("radius").value;
+
     return validateParkingName(name)
         && validateLatitude(latitude)
-        && validateLongitude(longitude);
+        && validateLongitude(longitude)
+        && validateRadius(radius);
 }
 
 function validateFullName(fullName) {
@@ -125,25 +129,6 @@ function validateDate(date) {
     return true;
 }
 
-function validateTime(time) {
-    console.debug("Validating time", time);
-
-    // Time format: hh:mm, military time
-    var timeRegExp = new RegExp("^(00|[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9])$");
-    if (time === '') {
-        window.alert("Enter a time.");
-        return false;
-    }
-
-    if (!timeRegExp.test(time))
-    {
-        window.alert("Invalid time format.");
-        return false;
-    }
-
-    return true;
-}
-
 function validateEmail(email) {
     console.debug("Validating email");
     // Email format: xyz@domain.abc
@@ -201,33 +186,6 @@ function validatePassword(password, passwordRetype) {
     return true;
 }
 
-function validateDateStartBeforeEnd(startDate, startTime, endDate, endTime) {
-    console.debug("Validating start date-time before end date-time", startTime);
-
-    // Slice date to get year, month and day
-    let year = startDate.slice(0,4);
-    let month = startDate.slice(5,7);
-    let day = startDate.slice(8,10);
-    let hour = startTime.slice(0,2);
-    let minutes = startTime.slice(3,5);
-    console.log(year, month, day, hour, minutes);
-    let start = new Date(year, month, day, hour, minutes);
-
-    year = endDate.slice(0,4);
-    month = endDate.slice(5,7);
-    day = endDate.slice(8,10);
-    hour = endTime.slice(0,2);
-    minutes = endTime.slice(3,5);
-    let end = new Date(year, month, day, hour, minutes);
-
-    if (end.valueOf() - start.valueOf() < 0) {
-        window.alert("Start date must be before end date.");
-        return false;
-    }
-
-    return true;
-}
-
 function validateLatitude(latitude) {
     console.debug("Validating latitude coordinates");
 
@@ -251,6 +209,20 @@ function validateLongitude(longitude) {
         let longitudeFloat = parseFloat(longitude);
         if (!(-180 <= longitudeFloat && longitudeFloat <= 180)) {
             window.alert("Enter valid longitude coordinates.")
+            return false;
+        }
+    }
+    return true;
+}
+
+function validateRadius(radius) {
+    console.debug("Validating radius");
+
+    // Radius must be a value between 0 and 50.
+    if (radius !== '') {
+        let radiusInt = parseInt(radius);
+        if (!(0 <= radiusInt && radiusInt <= 0)) {
+            window.alert("Enter valid radius.")
             return false;
         }
     }

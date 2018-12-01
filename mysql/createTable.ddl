@@ -22,7 +22,7 @@ CREATE TABLE parkingSpace (
     longitude DECIMAL(11,8) NOT NULL,
     website TEXT NOT NULL,
     paymentOptions SMALLINT NOT NULL,
-    imageName VARCHAR(40),
+    imageName VARCHAR(44),
     UNIQUE(name),
     CONSTRAINT pk_parkingSpace PRIMARY KEY(id)
 );

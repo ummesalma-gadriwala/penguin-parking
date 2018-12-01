@@ -103,7 +103,8 @@ function displayReviewTable($result) {
 function displayMap($parkingName, $latitude, $longitude) {
     $arr = ["name" => $parkingName,
             "latitude" => $latitude,
-            "longitude" => $longitude];
+            "longitude" => $longitude,
+            "website" => $website];
 
     echo "'parkingResult(",json_encode($arr),")'";
 }

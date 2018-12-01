@@ -45,6 +45,7 @@ function parkingResult(parkingSpot) {
     latitude = parkingSpot["latitude"];
     longitude = parkingSpot["longitude"];
     parkingName = parkingSpot["name"];
+    website = parkingSpot["website"];
 
     // the map is centred at user's current location (hardcoded here) with a zoom level set at 16
     var mymap = L.map('mapId').setView([latitude, longitude], 16);
@@ -62,7 +63,7 @@ function parkingResult(parkingSpot) {
     
     // For a single parking in particular, add only one marker on the live map
     console.debug("Single on live map");
-    var infoWindow = L.popup().setContent('<a href="parking.php?name=' + parkingName + '"><b>' + parkingName + '</b></a><br>');
+    var infoWindow = L.popup().setContent('<a href="' + website + '"><b>' + parkingName + '</b></a><br>');
     // add a pop up to the marker with a link that reroutes to the parking spot's page
     var marker = L.marker([latitude, longitude])
                   .bindPopup(infoWindow)

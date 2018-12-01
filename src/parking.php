@@ -76,7 +76,7 @@ include '../php/submitReview.php';
 
     <div id="mapId"></div> <br>
     
-    <img src="../media/indigo.JPG" alt="Indigo Parking Location" style="max-width:600px;" class="image"> <br>
+    <img src=<?php echo "$imageURL"; ?> alt=<?php echo "$parkingName image"; ?> style="max-width:600px;" class="image"> <br>
     </div>
     
     <div class="pageFooter">

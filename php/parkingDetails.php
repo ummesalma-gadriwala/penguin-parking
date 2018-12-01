@@ -25,9 +25,15 @@ try {
     $latitude = $result['latitude'];
     $longitude = $result['longitude'];
     $website = $result['website'];
+    $imageName = $result['imageName'];
     $paymentOptions = $result['paymentOptions'];
 
     $payment = getPaymentString($paymentOptions);
+
+    $imageURL = "";
+    if (!is_null($imageName) || $imageName !== "") {
+        $imageURL = "https://s3.amazonaws.com/gadriwau/" . $imageName;
+    }
 
     // storing parkingID as session variable to facilitate adding reviews later
     $_SESSION['parkingID'] = $parkingID;

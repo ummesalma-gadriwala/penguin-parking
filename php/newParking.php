@@ -15,7 +15,7 @@ if (isset($_POST['submitParking'])) {
     if (!isset($_FILES['spotImage']['error']) ||
         ($_FILES["spotImage"]["error"] != UPLOAD_ERR_OK)) {
         echo "Error uploading file.";
-        $imageName = "uploadError";
+        $imageName = "";
         exit();
     }
 
@@ -24,7 +24,7 @@ if (isset($_POST['submitParking'])) {
     if ($finfo->file($_FILES["spotImage"]["tmp_name"]) === "image/jpeg") {
         $imageExtension = "jpg";
     } else {
-        $imageName = "invalidFile";
+        $imageName = "";
         echo "Uploaded file was not a valid image";
         exit();
     }
@@ -87,7 +87,7 @@ if (isset($_POST['submitParking'])) {
                 echo "File upload successful: ", $url;
             } else {
                 echo "Error uploading file to bucket.";
-                $imageName = "s3UploadError";
+                $imageName = "";
             }
 
             // valid user information, add to database

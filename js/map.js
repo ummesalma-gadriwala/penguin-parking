@@ -1,9 +1,9 @@
-function searchResult(arr) {
+function searchResult(parkingLocations) {
     // initialize a map from the OpenStreet map instance
-    console.debug("Initializing map", arr);
+    console.debug("Initializing map", parkingLocations);
 
-    latitude = arr[0]["latitude"];
-    longitude = arr[0]["longitude"];
+    latitude = parkingLocations[0]["latitude"];
+    longitude = parkingLocations[0]["longitude"];
     // the map is centred at first parking location with a zoom level set at 16
     var mymap = L.map('mapId').setView([latitude, longitude], 16);
     
@@ -16,23 +16,22 @@ function searchResult(arr) {
         }
     ).addTo(mymap);
 
-    var bounds = L.LatLngBounds();
+    var bounds = new L.LatLngBounds();
 
     // create markers for the sample search results' lat, long coordinate and add them to the map
     console.debug("Display search results on a live map");
 
-    for (i = 1; i < arr.length; i++) {
-        parkingName = arr[i]["name"];
-        latitude = arr[i]["latitude"];
-        longitude = arr[i]["longitude"];
-        console.log(name, latitude, longitude);
+    for (i = 0; i < parkingLocations.length; i++) {
+        parkingName = parkingLocations[i]["name"];
+        latitude = parkingLocations[i]["latitude"];
+        longitude = parkingLocations[i]["longitude"];
+        console.log(parkingName, latitude, longitude);
 
         var infoWindow = L.popup().setContent('<a href="parking.php?name=' + parkingName + '"><b>' + parkingName + '</b></a><br>');
         // add a pop up to the marker with a link that reroutes to the parking spot's page
         var marker = L.marker([latitude, longitude])
-                      .addTo(mymap)
                       .bindPopup(infoWindow)
-                      .openPopup();
+                      .addTo(mymap);
 
         bounds.extend(marker.getLatLng());
     }

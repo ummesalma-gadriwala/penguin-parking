@@ -14,8 +14,8 @@ if (isset($_POST['submitParking'])) {
     // error check to see if file was correctly uploaded
     if (!isset($_FILES['spotImage']['error']) ||
         ($_FILES["spotImage"]["error"] != "UPLOAD_ERR_OK")) {
-            echo "Error uploading file.";
-            exit();
+        echo "Error uploading file.";
+        exit();
     }
 
     // check to see if user has uploaded file of type image
@@ -84,7 +84,7 @@ if (isset($_POST['submitParking'])) {
                 $url = 'https://s3.amazonaws.com/' . $bucketName . '/' . $imageName;
                 echo "File upload successful: ", $url;
             } else {
-                echo "Error uploading file.";
+                echo "Error uploading file to bucket.";
                 $imageName = "";
             }
 

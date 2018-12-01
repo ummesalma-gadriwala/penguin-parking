@@ -100,7 +100,7 @@ function displayReviewTable($result) {
     }
 }
 
-function displayMap($parkingName, $latitude, $longitude) {
+function displayMap($parkingName, $latitude, $longitude, $website) {
     $arr = ["name" => $parkingName,
             "latitude" => $latitude,
             "longitude" => $longitude,

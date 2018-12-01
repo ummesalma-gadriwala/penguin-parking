@@ -1,9 +1,9 @@
 <?php
 require_once("dbConnect.php"); // connect to database
-require("S3.php");
+require("S3.php"); // connecting to S3 bucket
 
-$awsAccessKey = "AKIAJRMQ2WV7NWEKIIDA";
-$awsSecretKey = "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";
+$awsAccessKey = "AKIAIJ5T4P6C2ZU45VWA";
+$awsSecretKey = "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";
 $bucketName = "gadriwau";
 
 $s3 = new S3($awsAccessKey, $awsSecretKey);

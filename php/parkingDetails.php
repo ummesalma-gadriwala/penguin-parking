@@ -30,8 +30,7 @@ try {
 
     $payment = getPaymentString($paymentOptions);
 
-    $imageURL = "";
-    if (!is_null($imageName) || $imageName !== "") {
+    if (!is_null($imageName) && $imageName !== "") {
         $imageURL = "https://s3.amazonaws.com/gadriwau/" . $imageName;
         $imageElement = "<img src=$imageURL alt='$parkingName image' style='max-width:600px;' class='image'> <br>";
         

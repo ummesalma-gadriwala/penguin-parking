@@ -33,6 +33,8 @@ try {
     $imageURL = "";
     if (!is_null($imageName) || $imageName !== "") {
         $imageURL = "https://s3.amazonaws.com/gadriwau/" . $imageName;
+        $imageElement = "<img src=$imageURL alt='$parkingName image' style='max-width:600px;' class='image'> <br>";
+        
     }
 
     // storing parkingID as session variable to facilitate adding reviews later

@@ -1,8 +1,32 @@
 <?php
 require_once("dbConnect.php"); // connect to database
+require("S3.php");
+
+$awsAccessKey = "AKIAJRMQ2WV7NWEKIIDA";
+$awsSecretKey = "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";
+$bucketName = "gadriwau";
+
+$s3 = new S3($awsAccessKey, $awsSecretKey);
 
 if (isset($_POST['submitParking'])) {
     // paramaters are set
+
+    // error check to see if file was correctly uploaded
+    if (!isset($_FILES['spotImage']['error']) ||
+        ($_FILES["spotImage"]["error"] != "UPLOAD_ERR_OK")) {
+            echo "Error uploading file.";
+            exit();
+    }
+
+    // check to see if user has uploaded file of type image
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    if ($finfo->file($_FILES["spotImage"]["tmp_name"]) === "image/jpeg") {
+        $imageExtension = "jpg";
+    } else {
+        echo "Uploaded file was not a valid image";
+        exit();
+    }
+
     if (isset($_POST['name']) &&
         isset($_POST['rate']) &&
         isset($_POST['spots']) &&
@@ -46,11 +70,29 @@ if (isset($_POST['submitParking'])) {
         validateURL($website)) {
 
         try {
+            // uploading image to S3 bucket
+            // generate unique filename
+            $imageHash = sha1_file($_FILES["spotImage"]["tmp_name"]);
+            $imageName = $imageHash . "." . $imageExtension;
+
+            $ok = $s3->putObjectFile($_FILES["spotImage"]["tmp_name"],
+                                     $bucketName,
+                                     $imageName,
+                                     S3::ACL_PUBLIC_READ);
+
+            if ($ok) {
+                $url = 'https://s3.amazonaws.com/' . $bucketName . '/' . $imageName;
+                echo "File upload successful: ", $url;
+            } else {
+                echo "Error uploading file.";
+                $imageName = "";
+            }
+
             // valid user information, add to database
             $stmt = $conn->prepare(
-                'INSERT INTO parkingSpace(name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions)
+                'INSERT INTO parkingSpace(name, description, hourlyRate, numberOfSpots, latitude, longitude, website, paymentOptions, imageName)
                 VALUES
-                (:name, :description, :rate, :spots, :latitude, :longitude, :website, :payment)'
+                (:name, :description, :rate, :spots, :latitude, :longitude, :website, :payment, :imageName)'
             );
 
             $payment = getPayment($paymentList);
@@ -63,10 +105,14 @@ if (isset($_POST['submitParking'])) {
             $stmt->bindValue(':longitude', $longitude);
             $stmt->bindValue(':website', $website);
             $stmt->bindValue(':payment', $payment);
+            $stmt->bindValue(':imageName', $imageName);
             
             $stmt->execute();
             
             echo "New parking added!";
+
+            
+
             header("Location: http://" . $_SERVER['HTTP_HOST'] . "/search.php");
             exit();
         } catch (PDOException $error) {

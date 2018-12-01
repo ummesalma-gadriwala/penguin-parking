@@ -27,7 +27,7 @@ include '../php/newParking.php';
     <br>
 
     <div class="content">
-        <form action="submission.php" method="POST" class="forms">
+        <form action="submission.php" method="POST" class="forms" enctype="multipart/form-data">
             <p>
             <label>Name:</label>
                 <!-- Name must be a upper or lowercase alphabet 
@@ -78,7 +78,7 @@ include '../php/newParking.php';
             <p>
             <label>Image:</label>
                 <!-- Only accepts images files and is a required field. -->
-                <input type="file" name="spotImage" accept="image/*" required="required">
+                <input type="file" name="spotImage" accept="image/jpeg" required="required">
             </p>
 
             <br>

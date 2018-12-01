@@ -19,7 +19,7 @@ if (isset($_POST['submitParking'])) {
         exit();
     }
 
-    // check to see if user has uploaded file of type image
+    // check to see if user has uploaded file of type image/jpeg
     $finfo = new finfo(FILEINFO_MIME_TYPE);
     if ($finfo->file($_FILES["spotImage"]["tmp_name"]) === "image/jpeg") {
         $imageExtension = "jpg";

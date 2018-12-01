@@ -39,12 +39,15 @@ function searchResult(parkingLocations) {
     mymap.fitBounds(bounds);
 }
 
-function indigoParkingResult() {
+function parkingResult(parkingSpot) {
     // initialize a map from the OpenStreet map instance
-    console.debug("Initializing map");
+    console.debug("Initializing map", parkingSpot);
+    latitude = parkingSpot["latitude"];
+    longitude = parkingSpot["longitude"];
+    parkingName = parkingSpot["name"];
 
     // the map is centred at user's current location (hardcoded here) with a zoom level set at 16
-    var mymap = L.map('mapId').setView([43.257691, -79.870204], 16);
+    var mymap = L.map('mapId').setView([latitude, longitude], 16);
     
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZ2Fkcml3YXUiLCJhIjoiY2pub3VjdGE3MDJuMTNwcXRkY21oejBscCJ9.BY26EUc35ApKv2sX0jcUHA', 
         {    
@@ -54,9 +57,17 @@ function indigoParkingResult() {
             accessToken: 'your.mapbox.access.token'
         }
     ).addTo(mymap);
+
+    var bounds = new L.LatLngBounds();
     
-    // For Indigo parking in particular, add only one marker on the live map
-    console.debug("Indigo Parking on live map");
-    indigo = L.marker([43.257691, -79.870204]).addTo(mymap);
-    indigo.bindPopup('<a href="https://ca.parkindigo.com/en/car-park/32-james-street-south" target="_blank">Indigo Parking Garage</a>').openPopup();
+    // For a single parking in particular, add only one marker on the live map
+    console.debug("Single on live map");
+    var infoWindow = L.popup().setContent('<a href="parking.php?name=' + parkingName + '"><b>' + parkingName + '</b></a><br>');
+    // add a pop up to the marker with a link that reroutes to the parking spot's page
+    var marker = L.marker([latitude, longitude])
+                  .bindPopup(infoWindow)
+                  .addTo(mymap);
+
+    bounds.extend(marker.getLatLng());
+    mymap.fitBounds(bounds);
 }

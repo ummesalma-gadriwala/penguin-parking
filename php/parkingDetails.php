@@ -99,4 +99,12 @@ function displayReviewTable($result) {
             </tr>";
     }
 }
+
+function displayMap($parkingName, $latitude, $longitude) {
+    $arr = ["name" => $parkingName,
+            "latitude" => $latitude,
+            "longitude" => $longitude];
+
+    echo "'parkingResult(",json_encode($arr),")'";
+}
 ?>

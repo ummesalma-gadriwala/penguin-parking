@@ -27,7 +27,7 @@ include '../php/submitReview.php';
     <script type="text/javascript" src="../js/map.js"></script> 
     <script type="text/javascript" src="../js/reviewForm.js"></script> 
 </head>
-<body onload="indigoParkingResult()">
+<body onload=<?php displayMap($parkingName, $latitude, $longitude); ?>>
     <div class="everything">
     <div class="header">
         <?php include '../php/header.php';?>

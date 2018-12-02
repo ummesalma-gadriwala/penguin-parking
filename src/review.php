@@ -2,10 +2,10 @@
 <?php 
 // This page is only accessible if user is signed in
 session_start();
-$parkingName = $_SESSION['parkingName'];
+$parkingName = $_GET['name'];
 if (!isset($_SESSION['isLoggedIn'])) {
-    if (isset($_SESSION['parkingName'])) {
-        header("Location: http://" . $_SERVER['HTTP_HOST'] . "/parking.php");
+    if (isset($_GET['name'])) {
+        header("Location: http://" . $_SERVER['HTTP_HOST'] . "/parking.php?name" . $parkingName);
     } else {
         header("Location: http://" . $_SERVER['HTTP_HOST'] . "/index.php");
     }

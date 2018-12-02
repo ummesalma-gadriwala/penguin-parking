@@ -1,10 +1,10 @@
 <?php
 $parkingName = $_GET['name'];
-if (isset($_GET['name'])) {
-    $parkingName = $_GET['name'];
-} else {
-    $parkingName = $_SESSION['parkingName'];
-}
+// if (isset($_GET['name'])) {
+//     $parkingName = $_GET['name'];
+// } else {
+//     $parkingName = $_SESSION['parkingName'];
+// }
 require_once("dbConnect.php");
 try {
     // get details of parking from parkingSpace table

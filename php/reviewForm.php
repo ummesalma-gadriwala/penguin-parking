@@ -1,6 +1,7 @@
 <?php
 require_once("dbConnect.php");
 session_start();
+$parkingName = $_GET['name'];
 
 if (isset($_POST["addReview"])) {
     // get parameters
@@ -43,7 +44,7 @@ if (isset($_POST["addReview"])) {
                 $stmt->execute();
                 
                 echo "Review added!";
-                header("Location: http://" . $_SERVER['HTTP_HOST'] . "/parking.php");
+                header("Location: http://" . $_SERVER['HTTP_HOST'] . "/parking.php?name=" . $parkingName);
                 exit();
             } catch (PDOException $error) {
                 echo "Error: ", $error->getMessage();

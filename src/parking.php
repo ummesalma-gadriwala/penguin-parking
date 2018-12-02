@@ -56,11 +56,12 @@ include '../php/submitReview.php';
     <p>
         <b>Payment options:</b> <?php echo "$payment"; ?>
     </p>
+
     <?php include '../php/reviewForm.php'; ?>
         <b>Reviews:</b>
 
         
-        <form action="parking.php" method="GET" class="reviewForm">
+        <form action="review.php?name=<?php echo $parkingName ?>" method="GET" class="reviewForm">
             <input type="submit" name="reviewSubmit" value="Write a review">
         </form>
 

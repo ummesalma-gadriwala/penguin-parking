@@ -5,6 +5,7 @@ $parkingName = $_GET['name'];
 
 if (isset($_POST["addReview"])) {
     // get parameters
+    echo "review button was pressed";
     if (isset($_POST["rating"])) {
 
         $review = $_POST["review"];
@@ -15,6 +16,7 @@ if (isset($_POST["addReview"])) {
         // TODO: validate form input
         if (validateInteger($rating, 0, 5)) {
             try {
+                echo "data is valid";
                 // valid data, add review to database
 
                 // find userID from username (username is unique)
@@ -28,6 +30,7 @@ if (isset($_POST["addReview"])) {
                 $query->execute();
                 $result = $query->fetch();
                 $userID = $result['id'];
+                echo $userID;
 
                 // insert review into db
                 $stmt = $conn->prepare(

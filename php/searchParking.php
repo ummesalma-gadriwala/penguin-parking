@@ -15,7 +15,7 @@ if (isset($_POST['searchParking'])) {
         (isset($_POST['rate']) && $_POST['rate'] != "0") ||
         (isset($_POST['latitude']) && $_POST['latitude'] != "" &&
          isset($_POST['longitude']) && $_POST['longitude'] != "" &&
-         isset($_POST['radius']) && $_POST['radius'] != "0") ||
+         isset($_POST['radius']) && $_POST['radius'] != "" && $_POST['radius'] != "0") ||
         (isset($_POST['rating']) && $_POST['rating'] != "")) {
             $addName = false;
             $addRate = false;

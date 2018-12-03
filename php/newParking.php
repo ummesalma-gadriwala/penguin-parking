@@ -1,5 +1,6 @@
 <?php
 require_once("dbConnect.php"); // connect to database
+include("validate.php"); // validation functions
 require("S3.php"); // connecting to S3 bucket
 
 $awsAccessKey = "AKIAIJ5T4P6C2ZU45VWA";
@@ -63,7 +64,7 @@ if (isset($_POST['submitParking'])) {
     $website = $_POST["website"];
     
     // validate user registration form input
-    if (validateName($name) &&
+    if (validateParkingName($name) &&
         validateInteger($rate, 1, 50) &&
         validateInteger($spots, 1, 100) &&
         validateFloat($latitude, -90, 90) &&
@@ -131,31 +132,5 @@ function getPayment($paymentList) {
     }
 
     return $str;
-}
-
-function validateName($name) {
-    $pattern = '/^[A-Za-z]+$/';
-
-    return preg_match($pattern, $name) === 1;
-}
-
-function validateInteger($i, $min, $max) {
-    $number = intval($i, 10);
-    return ($number !== 0 &&
-        $number >= $min &&
-        $number <= $max);
-}
-
-function validateFloat($f, $min, $max) {
-    $number = floatval($f);
-    return ($number !== 0 &&
-        $number >= $min &&
-        $number <= $max);
-}
-
-function validateURL($url) {
-    $pattern = "/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i";
-
-    return preg_match($pattern, $url) === 1;
 }
 ?>

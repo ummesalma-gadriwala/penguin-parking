@@ -1,5 +1,6 @@
 <?php
 require_once("dbConnect.php");
+include("validate.php");
 session_start();
 $parkingName = $_GET['name'];
 

@@ -61,8 +61,8 @@ include '../php/submitReview.php';
         <b>Reviews:</b>
 
         
-        <form action="review.php?name=<?php echo $parkingName ?>" method="GET" class="reviewForm">
-            <input type="submit" name="reviewSubmit" value="Write a review">
+        <form action="review.php" method="GET" class="reviewForm">
+            <input type="submit" name="name" value="<?php echo $parkingName; ?>">
         </form>
 
         <table class="reviewsTable">

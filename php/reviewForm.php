@@ -28,8 +28,7 @@ if (isset($_POST["addReview"])) {
                 $query->execute();
                 $result = $query->fetch();
                 $userID = $result['id'];
-                
-        
+
                 // insert review into db
                 $stmt = $conn->prepare(
                     'INSERT INTO review (parkingID, userID, review, rating)

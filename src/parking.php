@@ -60,10 +60,29 @@ include '../php/submitReview.php';
     <?php include '../php/reviewForm.php'; ?>
         <b>Reviews:</b>
 
-        
-        <form action="review.php" method="GET" class="reviewForm">
-            <input type="submit" name="name" value="<?php echo $parkingName; ?>">
+        <?php echo $parkingName; ?>
+        <!-- <form action="review.php" method="GET" class="reviewForm"> -->
+            <!-- <input type="button" name="reviewSubmit" value="Write a review"> -->
+        <!-- </form> -->
+        <button onclick="displayForm()">Write a review</button>
+        <div class="reviewForm" id="reviewForm">
+        <form action="" method="POST" class="forms">
+        <p>
+        <label>Review:</label>
+            <!-- Maxlength specifies a maximum of 250 characters in the description -->
+            <textarea name="review" rows="3" cols="30" maxlength="250"></textarea>
+        </p>
+        <p>
+        <label>Rating:</label>
+            <!-- Default value of 5 -->
+            <input type="range"name="rating" min="0" max="5" value="5" class="slider" id="ratingRange" step="1">
+        </p>
+        <br>
+        <div class="submitButton">
+            <input type="submit" name="addReview" value="Submit">
+        </div>
         </form>
+        </div>
 
         <table class="reviewsTable">
             <?php displayReviewTable($result); ?>

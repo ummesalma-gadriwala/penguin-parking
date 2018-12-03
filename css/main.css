@@ -162,6 +162,11 @@ form {
     text-align: center;
 }
 
+/* Review Form is hidden by default */
+.reviewForm {
+    display: none;
+}
+
 /* user reviews tables */
 .reviewsTable td {
     text-align: left;

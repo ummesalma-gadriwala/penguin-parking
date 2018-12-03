@@ -43,7 +43,7 @@ if (isset($_POST["addReview"])) {
                 $stmt->execute();
                 
                 echo "Review added!";
-                header("Location: http://" . $_SERVER['HTTP_HOST'] . "/parking.php?name=" . $parkingName);
+                // header("Location: http://" . $_SERVER['HTTP_HOST'] . "/parking.php?name=" . $parkingName);
                 exit();
             } catch (PDOException $error) {
                 echo "Error: ", $error->getMessage();

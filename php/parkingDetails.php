@@ -38,7 +38,6 @@ try {
 
     // storing parkingID as session variable to facilitate adding reviews later
     $_SESSION['parkingID'] = $parkingID;
-    $_SESSION['parkingName'] = $parkingName;
 
     // get parking reviews from review table
     $query = $conn->prepare(

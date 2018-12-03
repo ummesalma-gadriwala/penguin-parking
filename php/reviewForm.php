@@ -13,7 +13,8 @@ if (isset($_POST["addReview"])) {
         $rating = $_POST["rating"];
         $username = $_SESSION["username"];
         $parkingID = $_SESSION["parkingID"];
-
+        echo $username;
+        echo $parkingID;
         // TODO: validate form input
         if (validateInteger($rating, 0, 5)) {
             try {
@@ -32,6 +33,19 @@ if (isset($_POST["addReview"])) {
                 $result = $query->fetch();
                 $userID = $result['id'];
                 echo $userID;
+
+                // find parkingID from parkingName (parkingName is unique)
+                $query = $conn->prepare(
+                    'SELECT id FROM parkingSpace
+                    WHERE
+                    `parkingName` = :parkingName'
+                );
+        
+                $query->bindValue(':parkingName', $parkingName);
+                $query->execute();
+                $result = $query->fetch();
+                $parkingID = $result['id'];
+                echo $parkingID;
 
                 // insert review into db
                 $stmt = $conn->prepare(

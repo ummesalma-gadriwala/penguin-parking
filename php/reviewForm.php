@@ -6,16 +6,13 @@ $parkingName = $_GET['name'];
 
 if (isset($_POST["addReview"])) {
     // get parameters
-    echo "review button was pressed";
     if (isset($_POST["rating"])) {
 
         $review = $_POST["review"];
         $rating = $_POST["rating"];
         $username = $_SESSION["username"];
         $parkingID = $_SESSION["parkingID"];
-        echo $username;
-        echo $parkingID;
-        // TODO: validate form input
+        
         if (validateInteger($rating, 0, 5)) {
             try {
                 echo "data is valid";
@@ -32,20 +29,18 @@ if (isset($_POST["addReview"])) {
                 $query->execute();
                 $result = $query->fetch();
                 $userID = $result['id'];
-                echo $userID;
 
                 // find parkingID from parkingName (parkingName is unique)
                 $query = $conn->prepare(
                     'SELECT id FROM parkingSpace
                     WHERE
-                    `parkingName` = :parkingName'
+                    `name` = :parkingName'
                 );
         
                 $query->bindValue(':parkingName', $parkingName);
                 $query->execute();
                 $result = $query->fetch();
                 $parkingID = $result['id'];
-                echo $parkingID;
 
                 // insert review into db
                 $stmt = $conn->prepare(
@@ -60,8 +55,7 @@ if (isset($_POST["addReview"])) {
                 
                 $stmt->execute();
                 
-                echo "Review added!";
-                // header("Location: http://" . $_SERVER['HTTP_HOST'] . "/parking.php?name=" . $parkingName);
+                header("Location: http://" . $_SERVER['HTTP_HOST'] . "/parking.php?name=" . $parkingName);
                 exit();
             } catch (PDOException $error) {
                 echo "Error: ", $error->getMessage();

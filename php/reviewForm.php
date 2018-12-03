@@ -5,6 +5,11 @@ session_start();
 $parkingName = $_GET['name'];
 
 if (isset($_POST["addReview"])) {
+    // prompt user to log in to add review if not already
+    if (!isset($_SESSION['isLoggedIn'])) {
+        echo "<script type='text/javascript'>window.alert('Sign in to add your review.');</script>";
+        exit();
+    }
     // get parameters
     if (isset($_POST["rating"])) {
 

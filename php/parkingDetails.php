@@ -55,7 +55,7 @@ try {
     $result = $query->fetchAll();
 
 } catch (PDOException $error) {
-    echo "Error: ", $error->getMessage();
+    // echo "Error: ", $error->getMessage();
 }
 
 function getPaymentString($paymentOptions) {

@@ -39,7 +39,7 @@ function checkPassword($username, $password, $conn) {
 
         return $query->rowCount() === 1;
     } catch (PDOException $error) {
-        echo "Failed: ", $error->getMessage();
+        // echo "Failed: ", $error->getMessage();
         return false;
     }    
 }

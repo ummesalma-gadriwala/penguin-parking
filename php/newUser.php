@@ -48,10 +48,11 @@ if (isset($_POST['register'])) {
             header("Location: http://" . $_SERVER['HTTP_HOST'] . "/index.php");
             exit();
         } catch (PDOException $error) {
-            echo "Error: ", $error->getMessage();
+            // echo "Error: ", $error->getMessage();
         }
     } else {
-        echo "Invalid input data.";
+        echo '<script type="text/javascript">window.alert("Invalid input data. Please try again.");</script>';
+        // echo "Invalid input data.";
     }
 }
 }

@@ -88,11 +88,10 @@ if (isset($_POST['searchParking'])) {
                 header("Location: http://" . $_SERVER['HTTP_HOST'] . "/results.php");
                 exit();
             } catch (PDOException $error) {
-                echo "Error: ", $error->getMessage();
             }            
         } else {
-            header("Location: http://" . $_SERVER['HTTP_HOST'] . "/search.php");
             echo '<script type="text/javascript">window.alert("Enter at least one parameter to search.");</script>';
+            // header("Location: http://" . $_SERVER['HTTP_HOST'] . "/search.php");
             exit();
         }
 

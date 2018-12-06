@@ -15,7 +15,8 @@ if (isset($_POST['submitParking'])) {
     // error check to see if file was correctly uploaded
     if (!isset($_FILES['spotImage']['error']) ||
         ($_FILES["spotImage"]["error"] != UPLOAD_ERR_OK)) {
-        echo "Error uploading file.";
+        // echo "Error uploading file.";
+        echo '<script type="text/javascript">window.alert("Error uploading file. Please try again.");</script>';
         $imageName = "";
         exit();
     }
@@ -26,7 +27,8 @@ if (isset($_POST['submitParking'])) {
         $imageExtension = "jpg";
     } else {
         $imageName = "";
-        echo "Uploaded file was not a valid image";
+        echo '<script type="text/javascript">window.alert("Uploaded file was not a valid image. Please try again.");</script>';
+        // echo "Uploaded file was not a valid image";
         exit();
     }
 
@@ -45,6 +47,7 @@ if (isset($_POST['submitParking'])) {
     $latitude = $_POST["latitude"];
     $longitude = $_POST["longitude"];
     $paymentList = [];
+
     foreach ($_POST['payment_list'] as $payment) {
         switch ($payment) {
             case "Visa":
@@ -117,10 +120,11 @@ if (isset($_POST['submitParking'])) {
             header("Location: http://" . $_SERVER['HTTP_HOST'] . "/search.php");
             exit();
         } catch (PDOException $error) {
-            echo "Error: ", $error->getMessage();
+            // echo "Error: ", $error->getMessage();
         }
     } else {
-        echo "Invalid input data.";
+        echo '<script type="text/javascript">window.alert("Invalid input data. Please try again.");</script>';
+        // echo "Invalid input data.";
     }
 }
 }

@@ -8,6 +8,7 @@ if (isset($_POST["addReview"])) {
     // prompt user to log in to add review if not already
     if (!isset($_SESSION['isLoggedIn'])) {
         echo "<script type='text/javascript'>window.alert('Sign in to add your review.');</script>";
+        header("Location: http://" . $_SERVER['HTTP_HOST'] . "/parking.php?name=" . $parkingName);
         exit();
     }
     // get parameters
@@ -63,7 +64,8 @@ if (isset($_POST["addReview"])) {
                 header("Location: http://" . $_SERVER['HTTP_HOST'] . "/parking.php?name=" . $parkingName);
                 exit();
             } catch (PDOException $error) {
-                echo "Error: ", $error->getMessage();
+                echo "<script type='text/javascript'>window.alert('Please enter a rating.');</script>";
+                // echo "Error: ", $error->getMessage();
             }
         }
     }

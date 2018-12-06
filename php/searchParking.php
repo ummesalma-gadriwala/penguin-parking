@@ -28,13 +28,15 @@ if (isset($_POST['searchParking'])) {
             try {
                 // valid input, run search
                 $searchQuery = "SELECT * FROM parkingSpace pS WHERE ";
+
+                // Add search paramaters to the query if they are set and not empty
                 if (isset($_POST['name']) && $_POST['name'] != "") {
                     $searchQuery .= "`name` LIKE :name AND ";
                     $addName = true;
                 }
         
                 if (isset($_POST['rate']) && $_POST['rate'] != "0") {
-                    $searchQuery .= "`hourlyRate` = :rate AND ";
+                    $searchQuery .= "`hourlyRate` >= :rate AND ";
                     $addRate = true;
                 }
         
@@ -76,16 +78,17 @@ if (isset($_POST['searchParking'])) {
                 $query->execute();
                 $result = $query->fetchAll();
                 
-                echo "search completed.";
-                $_SESSION['parkingResult'] = $result;
-                // foreach ($result as $parking) {
-                //     $name = $parking['name'];
-                //     $hourlyRate = $parking['hourlyRate'];
-                //     $numberOfSpots = $parking['numberOfSpots'];
-                //     echo "$name";
-                // }
+                // echo "search completed.";
+                if ($result.length === 0) {
+                    // no result found
+                    // Display alert on screen
+                    echo '<script type="text/javascript">window.alert("No parking spaces match your requirements.");</script>';
+                } else {
+                    // Redirect to results page
+                    $_SESSION['parkingResult'] = $result;
+                    header("Location: http://" . $_SERVER['HTTP_HOST'] . "/results.php");
+                }
                 
-                header("Location: http://" . $_SERVER['HTTP_HOST'] . "/results.php");
                 exit();
             } catch (PDOException $error) {
             }            

@@ -79,7 +79,7 @@ if (isset($_POST['searchParking'])) {
                 $result = $query->fetchAll();
                 
                 // echo "search completed.";
-                if ($result.length === 0) {
+                if (empty($result)) {
                     // no result found
                     // Display alert on screen
                     echo '<script type="text/javascript">window.alert("No parking spaces match your requirements.");</script>';

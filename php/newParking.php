@@ -3,15 +3,6 @@ require_once("dbConnect.php"); // connect to database
 include("validate.php"); // validation functions
 require("S3.php"); // connecting to S3 bucket
 
-// Values to prepopulate form input boxes.
-$nameValue = "";
-$descriptionValue = "";
-$rateValue = 50;
-$spotsValue = 100;
-$latitudeValue = "";
-$longitudeValue = "";
-$websiteValue = "";
-
 $awsAccessKey = "AKIAIJ5T4P6C2ZU45VWA";
 $awsSecretKey = "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";
 $bucketName = "gadriwau";
@@ -48,6 +39,7 @@ if (isset($_POST['submitParking'])) {
         isset($_POST['longitude']) && !empty($_POST['longitude']) &&
         isset($_POST['payment_list']) && !empty($_POST['payment_list']) &&
         isset($_POST['website']) &&  !empty($_POST['website'])) {
+            
     // get parameters with htmlspecialchars to avoid xxs attacks
     $name = htmlspecialchars($_POST["name"]);
     $description = htmlspecialchars($_POST["description"]);
@@ -58,6 +50,7 @@ if (isset($_POST['submitParking'])) {
     $website = htmlspecialchars($_POST["website"]);
     $paymentList = [];
 
+    // Store these values to reload them into form in case of error.
     $nameValue = $name;
     $descriptionValue = $description;
     $rateValue = $rate;
@@ -148,7 +141,6 @@ if (isset($_POST['submitParking'])) {
             $stmt->execute();
             
             // echo "New parking added!";
-
             // Redirect to search page
             header("Location: http://" . $_SERVER['HTTP_HOST'] . "/search.php");
             exit();

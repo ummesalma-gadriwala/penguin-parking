@@ -75,6 +75,9 @@ if (isset($_POST['register'])) {
         echo '<script type="text/javascript">window.alert("Invalid input data. Please try again.");</script>';
         // echo "Invalid input data.";
     }
+} else {
+    echo '<script type="text/javascript">window.alert("Required fields cannot be empty.");</script>';
+    // echo "Input data missing.";
 }
 }
 

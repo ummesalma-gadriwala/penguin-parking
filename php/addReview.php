@@ -4,10 +4,6 @@ include("validate.php");
 session_start();
 $parkingName = $_GET['name'];
 
-// Preset values for rating and review to display in form input
-$ratingValue = 5;
-$reviewValue = "";
-
 if (isset($_POST["addReview"])) {
     // prompt user to log in to add review if not already
     if (!isset($_SESSION['isLoggedIn'])) {
@@ -16,16 +12,16 @@ if (isset($_POST["addReview"])) {
         exit();
     }
     // get parameters
-    if (isset($_POST["rating"])) {
+    if (isset($_POST["rating"]) && !empty($_POST["rating"])) {
         // getting form parameters from POST
-        $review = $_POST["review"];
-        $rating = $_POST["rating"];
+        $review = htmlspecialchars($_POST["review"]);
+        $rating = htmlspecialchars($_POST["rating"]);
         $username = $_SESSION["username"];
         $parkingID = $_SESSION["parkingID"];
 
         // Convert rating and review using htmlspecialchars to prevent XXS attack
-        $ratingValue = htmlspecialchars($rating);
-        $reviewValue = htmlspecialchars($review);
+        $ratingValue = $rating;
+        $reviewValue = $review;
         
         // rating must be an integer between 0 and 5, if rating validation fails, ratingValue is set to 0.
         if (validateInteger($rating, 0, 5, $ratingValue)) {
@@ -95,8 +91,11 @@ if (isset($_POST["addReview"])) {
             }
         } else {
             // Display alert for invalid data.
-            echo "<script type='text/javascript'>window.alert('Please enter a rating.');</script>";
+            echo "<script type='text/javascript'>window.alert('Please enter a valid rating.');</script>";
         }
+    } else {
+        // Display alert if rating not entered.
+        echo "<script type='text/javascript'>window.alert('Please enter a rating.');</script>";
     }
 }
 

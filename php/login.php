@@ -9,7 +9,7 @@ if (isset($_POST['signin'])) {
             if (checkPassword($_POST['username'], $_POST['password'], $conn)) {
                 session_start();
                 $_SESSION['isLoggedIn'] = true;
-                $_SESSION['username'] = $_POST['username'];
+                $_SESSION['username'] = htmlspecialchars($_POST['username']);
                 echo '<script type="text/javascript">window.alert("Login successful.");</script>';
                 // echo "Login successful.";
                 header("Location: http://" . $_SERVER['HTTP_HOST'] . "/signedin.php");

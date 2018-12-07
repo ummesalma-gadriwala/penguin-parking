@@ -53,12 +53,6 @@
                     <option value="5">5</option>
                 </select> 
             </p>
-            <!-- <p>
-            <label>Payment Method:</label>
-                <input type="radio" name="payment" value="Visa">Visa
-                <input type="radio" name="payment" value="Cash" checked="checked">Cash
-                <input type="radio" name="payment" value="Debit">Debit
-            </p> -->
             <br>
             <div class="submitButton">
                 <input type="submit" name="searchParking" value="Search">

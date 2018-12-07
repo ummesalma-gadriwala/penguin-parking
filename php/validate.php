@@ -28,33 +28,53 @@ function validateURL($url) {
     return preg_match($pattern, $url) === 1;
 }
 
-function validateName($name) {
+function validateName($name, &$nameValue = "") {
     // Two words comprising of letters only
     $pattern = '/^[A-Za-z]+[ ][A-Za-z]+$/';
+
+    // name is invalid, set value to empty
+    if (preg_match($pattern, $name) !== 1) {
+        $nameValue = "";
+    }
 
     return preg_match($pattern, $name) === 1;
 }
 
-function validateUsername($username) {
+function validateUsername($username, &$usernameValue = "") {
     // Single string with letters, numbers, `.` and `-` special characters only
     $pattern = "/^[A-z]+[A-z0-9.-]*$/";
+
+    // username is invalid, set value to empty
+    if (preg_match($pattern, $username) !== 1) {
+        $usernameValue = "";
+    }
 
     return preg_match($pattern, $username) === 1;
 }
 
-function validateDate($date) {
+function validateDate($date, &$dateValue = "") {
     // Pattern: yyyy-mm-dd
     $pattern = "/^([12][0-9]{3}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01]))$/";
+
+    // date is invalid, set value to empty
+    if (preg_match($pattern, $date) !== 1) {
+        $dateValue = "";
+    }
 
     return preg_match($pattern, $date) === 1;
 }
 
-function validateEmail($email) {
+function validateEmail($email, &$emailValue = "") {
     // Email format: xyz@domain.abc
     // xyz maybe alphabets, numbers or special characters.
     // domain 
     // abc is 2 or more alphabets only.
     $pattern = "/^[A-z0-9.!#$%&'*+=?^_`{|}~-]+[@][A-z0-9.-]+[.][A-z]{2,}$/";
+
+    // email is invalid, set value to empty
+    if (preg_match($pattern, $email) !== 1) {
+        $emailValue = "";
+    }
 
     return preg_match($pattern, $email) === 1;
 }

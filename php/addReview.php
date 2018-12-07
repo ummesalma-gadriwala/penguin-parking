@@ -57,6 +57,21 @@ if (isset($_POST["addReview"])) {
                 $result = $query->fetch();
                 $parkingID = $result['id'];
 
+                // test if userID, parkingID combination already exists in database
+                $query = $conn->prepare(
+                    'SELECT *
+                    FROM review
+                    WHERE `parkingID` = :parkingID AND `userID` = :userID'
+                );
+
+                $query->bindValue(':parkingID', $parkingID);
+                $query->bindValue(':userID', $userID);
+                $query->execute();
+                if ($query->rowCount() !== 0) {
+                    echo '<script type="text/javascript">window.alert("You have already submitted a review for this parking space.");</script>';
+                    exit();
+                }
+
                 // insert review into db
                 $stmt = $conn->prepare(
                     'INSERT INTO review (parkingID, userID, review, rating)

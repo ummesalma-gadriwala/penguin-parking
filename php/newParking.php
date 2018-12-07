@@ -92,6 +92,20 @@ if (isset($_POST['submitParking'])) {
         validateURL($website, $websiteValue)) {
 
         try {
+            // test if parkingname already exists in database
+            $query = $conn->prepare(
+                'SELECT name
+                FROM parkingSpace
+                WHERE `name` = :name'
+            );
+
+            $query->bindValue(':name', $name);
+            $query->execute();
+            if ($query->rowCount() !== 0) {
+                echo '<script type="text/javascript">window.alert("Parking already exists.");</script>';
+                exit();
+            }
+
             // uploading image to S3 bucket
             // generate unique filename
             $imageHash = sha1_file($_FILES["spotImage"]["tmp_name"]);

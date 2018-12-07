@@ -75,7 +75,6 @@ if (isset($_POST['searchParking'])) {
                     $query->bindValue(':rating', $rating);
                 }
                 
-        
                 $query->execute();
                 $result = $query->fetchAll();
                 

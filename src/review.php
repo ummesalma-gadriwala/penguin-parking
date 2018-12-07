@@ -11,7 +11,7 @@ if (!isset($_SESSION['isLoggedIn'])) {
     }
     exit();
 }
-include '../php/reviewForm.php';
+include '../php/addReview.php';
 ?>
 <html>
 <head>

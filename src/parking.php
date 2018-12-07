@@ -57,7 +57,7 @@ include '../php/submitReview.php';
         <b>Payment options:</b> <?php echo "$payment"; ?>
     </p>
 
-    <?php include '../php/reviewForm.php'; ?>
+    <?php include '../php/addReview.php'; ?>
         <b>Reviews:</b>
         <br>
         <button onclick="displayForm()">Write a review</button>

@@ -33,6 +33,21 @@ if (isset($_POST['register'])) {
 
         try {
             // valid user information, add to database
+
+            // test if username already exists in database
+            $query = $conn->prepare(
+                'SELECT username
+                FROM user
+                WHERE `username` = :username'
+            );
+
+            $query->bindValue(':username', $username);
+            $query->execute();
+            if ($query->rowCount() !== 0) {
+                echo '<script type="text/javascript">window.alert("Username already exists. Try again.");</script>';
+                exit();
+            }
+
             $stmt = $conn->prepare(
                 'INSERT INTO user(fullName, username, dateOfBirth, email, passwordHash, salt)
                 VALUES

@@ -19,7 +19,7 @@ function validateInteger($i, $min, $max, &$iValue = "") {
         $number <= $max) {
             return true;
     }
-    $iValue = "";
+    $iValue = $min;
     return false;
 }
 
@@ -32,7 +32,7 @@ function validateFloat($f, $min, $max, &$fValue = "") {
             return true;
     }
 
-    $fValue = "";
+    $fValue = $min;
     return false;
 }
 

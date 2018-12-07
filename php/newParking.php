@@ -137,7 +137,7 @@ if (isset($_POST['submitParking'])) {
             // echo "Error: ", $error->getMessage();
         }
     } else {
-        echo '<script type="text/javascript">window.alert("Invalid input data. Please try again.");</script>';
+        echo '<script type="text/javascript">window.alert("Invalid parking submission. Please try again.");</script>';
         // echo "Invalid input data.";
     }
 }

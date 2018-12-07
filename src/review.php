@@ -36,12 +36,12 @@ include '../php/addReview.php';
         <p>
         <label>Review:</label>
             <!-- Maxlength specifies a maximum of 250 characters in the description -->
-            <textarea name="review" rows="3" cols="30" maxlength="250"></textarea>
+            <textarea name="review" rows="3" cols="30" maxlength="250" value="<?php echo $reviewValue; ?>"></textarea>
         </p>
         <p>
         <label>Rating:</label>
             <!-- Default value of 5 -->
-            <input type="range"name="rating" min="0" max="5" value="5" class="slider" id="ratingRange" step="1">
+            <input type="range" name="rating" min="0" max="5" value="<?php echo $ratingValue; ?>" class="slider" id="ratingRange" step="1">
         </p>
         <br>
         <div class="submitButton">

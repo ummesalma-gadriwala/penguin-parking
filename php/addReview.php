@@ -4,6 +4,9 @@ include("validate.php");
 session_start();
 $parkingName = $_GET['name'];
 
+$ratingValue = 5;
+$reviewValue = "";
+
 if (isset($_POST["addReview"])) {
     // prompt user to log in to add review if not already
     if (!isset($_SESSION['isLoggedIn'])) {
@@ -18,8 +21,12 @@ if (isset($_POST["addReview"])) {
         $rating = $_POST["rating"];
         $username = $_SESSION["username"];
         $parkingID = $_SESSION["parkingID"];
+
+        $ratingValue = htmlspecialchars($rating);
+        $reviewValue = htmlspecialchars($review);
         
-        if (validateInteger($rating, 0, 5)) {
+        
+        if (validateInteger($rating, 0, 5, $ratingValue)) {
             try {
                 echo "data is valid";
                 // valid data, add review to database

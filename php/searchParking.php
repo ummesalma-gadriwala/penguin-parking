@@ -37,7 +37,7 @@ if (isset($_POST['searchParking'])) {
                 }
         
                 if (isset($_POST['rate']) && !empty($_POST['rate'])) {
-                    $searchQuery .= "`hourlyRate` >= :rate AND ";
+                    $searchQuery .= "`hourlyRate` <= :rate AND ";
                     $addRate = true;
                 }
         
@@ -62,7 +62,7 @@ if (isset($_POST['searchParking'])) {
                     $query->bindValue(':name', $name);
                 }
                 if ($addRate) {
-                    $query->bindValue(':rate', $hourlyRate);
+                    $query->bindValue(':rate', $rate);
                 }
                 
                 if ($addLocation) {

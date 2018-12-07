@@ -2,13 +2,6 @@
 require_once("dbConnect.php"); // connect to database
 include("validate.php");
 
-// Values for input box to preload data for an error form
-// $fullNameValue = "";
-// $usernameValue = "";
-// $dateOfBirthValue = "";
-// $emailValue = "";
-
-
 if (isset($_POST['register'])) {
     // paramaters are set
     if (isset($_POST['fullName']) && !empty($_POST['fullName']) &&
@@ -18,17 +11,18 @@ if (isset($_POST['register'])) {
         isset($_POST['password']) && !empty($_POST['password']) &&
         isset($_POST['passwordRetype']) && !empty($_POST['passwordRetype'])) {
     // get parameters
-    $fullName = $_POST["fullName"];
-    $username = $_POST["username"];
-    $dateOfBirth = $_POST["dateOfBirth"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    $passwordRetype = $_POST["passwordRetype"];
+    $fullName = htmlspecialchars($_POST["fullName"]);
+    $username = htmlspecialchars($_POST["username"]);
+    $dateOfBirth = htmlspecialchars($_POST["dateOfBirth"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $password = htmlspecialchars($_POST["password"]);
+    $passwordRetype = htmlspecialchars($_POST["passwordRetype"]);
 
-    $fullNameValue = htmlspecialchars($fullName);
-    $usernameValue = htmlspecialchars($username);
-    $dateOfBirthValue = htmlspecialchars($dateOfBirth);
-    $emailValue = htmlspecialchars($email);
+    // Values for input box to preload data for an error form
+    $fullNameValue = $fullName;
+    $usernameValue = $username;
+    $dateOfBirthValue = $dateOfBirth;
+    $emailValue = $email;
     
     // validate user registration form input
     if (validateName($fullName, $fullNameValue) &&
@@ -45,6 +39,7 @@ if (isset($_POST['register'])) {
                 (:fullName, :username, :dateOfBirth, :email, SHA2(CONCAT(:password, :salt), 0), :salt)'
             );
 
+            // Password is hashed using SHA2 and salted for privacy before storing in db
             $salt = generateSalt();
             
             $stmt->bindValue(':fullName', $fullName);
@@ -59,6 +54,11 @@ if (isset($_POST['register'])) {
             header("Location: http://" . $_SERVER['HTTP_HOST'] . "/index.php");
             exit();
         } catch (PDOException $error) {
+            // If username already exists in table
+            if ($error->getCode() === 1062) {
+                echo '<script type="text/javascript">window.alert("Username already exists.");</script>';
+                $usernameValue = "";
+            }
         }
     } else {
         echo '<script type="text/javascript">window.alert("Invalid input data. Please try again.");</script>';

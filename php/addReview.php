@@ -75,6 +75,7 @@ if (isset($_POST["addReview"])) {
                 header("Location: http://" . $_SERVER['HTTP_HOST'] . "/parking.php?name=" . $parkingName);
                 exit();
             } catch (PDOException $error) {
+                echo '<script type="text/javascript">window.alert("Error occurred. Please try again.");</script>';
                 // echo "Error: ", $error->getMessage();
             }
         } else {

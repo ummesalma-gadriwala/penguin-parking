@@ -91,7 +91,9 @@ if (isset($_POST['searchParking'])) {
                 }
                 
                 exit();
-            } catch (PDOException $error) {}            
+            } catch (PDOException $error) {
+                echo '<script type="text/javascript">window.alert("Error occurred. Please try again.");</script>';
+            }            
         } else {
             echo '<script type="text/javascript">window.alert("Enter at least one parameter to search.");</script>';
             echo '<script type="text/javascript">window.history.back();</script>';

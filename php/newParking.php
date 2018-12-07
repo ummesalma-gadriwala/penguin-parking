@@ -139,6 +139,7 @@ if (isset($_POST['submitParking'])) {
             header("Location: http://" . $_SERVER['HTTP_HOST'] . "/search.php");
             exit();
         } catch (PDOException $error) {
+            echo '<script type="text/javascript">window.alert("Error occurred. Please try again.");</script>';
             // echo "Error: ", $error->getMessage();
         }
     } else {

@@ -54,11 +54,7 @@ if (isset($_POST['register'])) {
             header("Location: http://" . $_SERVER['HTTP_HOST'] . "/index.php");
             exit();
         } catch (PDOException $error) {
-            // If username already exists in table
-            if ($error->getCode() === 1062) {
-                echo '<script type="text/javascript">window.alert("Username already exists.");</script>';
-                $usernameValue = "";
-            }
+            echo '<script type="text/javascript">window.alert("Error occurred. Please try again.");</script>';
         }
     } else {
         echo '<script type="text/javascript">window.alert("Invalid input data. Please try again.");</script>';

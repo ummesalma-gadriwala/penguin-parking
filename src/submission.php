@@ -32,42 +32,37 @@ include '../php/newParking.php';
             <label>Name:</label>
                 <!-- Name must be a upper or lowercase alphabet 
                     followed by a series of alphabets or spaces -->
-                <input type="text" name="name" required="required" pattern="[A-Za-z][A-Za-z ]*">
+                <input type="text" name="name" required="required" pattern="[A-Za-z][A-Za-z ]*" value="<?php echo $nameValue; ?>">
             </p>
             <p>
             <label>Description:</label>
                 <!-- Maxlength specifies a maximum of 250 characters in the description -->
-                <textarea name="description" rows="3" cols="30" maxlength="250"></textarea>
+                <textarea name="description" rows="3" cols="30" maxlength="250" value="<?php echo $descriptionValue; ?>"></textarea>
             </p>
             <p>
             <label>Hourly Rate (CAD):</label>
                 <!-- Default value of $50 -->
-                <input type="number" name="rate" min="1" max="50" value="50" required="required">
+                <input type="number" name="rate" min="1" max="50" required="required" value="<?php echo $rateValue; ?>">
             </p>
             <p>
             <label>Number of spots:</label>
                 <!-- Default value of 100 spots -->
-                <input type="number" name="spots" min="1" max="100" value="100">
+                <input type="number" name="spots" min="1" max="100" value="<?php echo $spotsValue; ?>">
             </p>
             <p>
             <label>Location:</label>
                 <!-- Autodetect location and populate input box or manually enter a numeric value in the range -->
                 <input type="button" value="Auto Detect Location" id="geoLocate" onclick="getLocation()"> <br>
                 Latitude:
-                    <input type="number" name="latitude" id="latCoord" min="-90" max="90" step="0.001" required="required"> <br>
+                    <input type="number" name="latitude" id="latCoord" min="-90" max="90" step="0.001" required="required" value="<?php echo $latitudeValue; ?>"> <br>
                 Longitude:
-                    <input type="number" name="longitude" id="longCoord" min="-180" max="180" step="0.001" required="required">
+                    <input type="number" name="longitude" id="longCoord" min="-180" max="180" step="0.001" required="required" value="<?php echo $longitudeValue; ?>">
             </p>
-            <!-- <p> -->
-            <!-- <label>Rating:</label> -->
-                <!-- Default value of 5 -->
-                <!-- <input type="range" min="0" max="5" value="5" class="slider" id="ratingRange" step="1"> -->
-            <!-- </p> -->
             <p>
             <label>Website:</label>
                 <!-- Specifying the type as URL automatically ensures the input is a well-formatted url 
                 The https:// value hints the user about the required URL format. -->
-                <input type="url" name="website" placeholder="https://" required="required">
+                <input type="url" name="website" placeholder="https://" required="required" value="<?php echo $websiteValue; ?>">
             </p>
             <p>
             <label>Payment Options:</label>

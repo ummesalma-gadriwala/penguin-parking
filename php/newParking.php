@@ -3,10 +3,17 @@ require_once("dbConnect.php"); // connect to database
 include("validate.php"); // validation functions
 require("S3.php"); // connecting to S3 bucket
 
+$nameValue = "";
+$descriptionValue = "";
+$rateValue = 50;
+$spotsValue = 100;
+$latitudeValue = "";
+$longitudeValue = "";
+$websiteValue = "";
+
 $awsAccessKey = "AKIAIJ5T4P6C2ZU45VWA";
 $awsSecretKey = "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";
 $bucketName = "gadriwau";
-
 $s3 = new S3($awsAccessKey, $awsSecretKey);
 
 if (isset($_POST['submitParking'])) {
@@ -46,7 +53,16 @@ if (isset($_POST['submitParking'])) {
     $spots = $_POST["spots"];
     $latitude = $_POST["latitude"];
     $longitude = $_POST["longitude"];
+    $website = $_POST["website"];
     $paymentList = [];
+
+    $nameValue = $name;
+    $descriptionValue = $description;
+    $rateValue = $rate;
+    $spotsValue = $spots;
+    $latitudeValue = $latitude;
+    $longitudeValue = $longitude;
+    $websiteValue = $website;
 
     foreach ($_POST['payment_list'] as $payment) {
         switch ($payment) {
@@ -64,16 +80,14 @@ if (isset($_POST['submitParking'])) {
         }
     }
     
-    $website = $_POST["website"];
-    
     // validate user registration form input
-    if (validateParkingName($name) &&
-        validateInteger($rate, 1, 50) &&
-        validateInteger($spots, 1, 100) &&
-        validateFloat($latitude, -90, 90) &&
-        validateFloat($longitude, -180, 180) &&
+    if (validateParkingName($name, $nameValue) &&
+        validateInteger($rate, 1, 50, $rateValue) &&
+        validateInteger($spots, 1, 100, $spotsValue) &&
+        validateFloat($latitude, -90, 90, $latitudeValue) &&
+        validateFloat($longitude, -180, 180, $longitudeValue) &&
         count($paymentList) !== 0 &&
-        validateURL($website)) {
+        validateURL($website, $websiteValue)) {
 
         try {
             // uploading image to S3 bucket

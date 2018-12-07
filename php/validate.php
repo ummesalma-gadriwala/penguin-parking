@@ -1,29 +1,48 @@
 <?php 
-function validateParkingName($name) {
+function validateParkingName($name, &$nameValue = "") {
     // Parking Name is one word (single string comprising of letters only)
     $pattern = '/^[A-Za-z]+$/';
+
+    // name is invalid, set value to empty
+    if (preg_match($pattern, $name) !== 1) {
+        $nameValue = "";
+    }
 
     return preg_match($pattern, $name) === 1;
 }
 
-function validateInteger($i, $min, $max) {
+function validateInteger($i, $min, $max, &$iValue = "") {
     // validate if i is an integer between min and max (inclusive)
     $number = intval($i, 10);
-    return ($number !== 0 &&
+    if ($number !== 0 &&
         $number >= $min &&
-        $number <= $max);
+        $number <= $max) {
+            return true;
+    }
+    $iValue = "";
+    return false;
 }
 
-function validateFloat($f, $min, $max) {
+function validateFloat($f, $min, $max, &$fValue = "") {
     // validate if f is a float between min and max (inclusive)
     $number = floatval($f);
-    return ($number !== 0 &&
+    if ($number !== 0 &&
         $number >= $min &&
-        $number <= $max);
+        $number <= $max) {
+            return true;
+    }
+
+    $fValue = "";
+    return false;
 }
 
-function validateURL($url) {
+function validateURL($url, &$urlValue = "") {
     $pattern = "/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i";
+
+    // name is invalid, set value to empty
+    if (preg_match($pattern, $url) !== 1) {
+        $urlValue = "";
+    }
 
     return preg_match($pattern, $url) === 1;
 }

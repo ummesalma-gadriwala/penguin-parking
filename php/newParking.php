@@ -3,6 +3,7 @@ require_once("dbConnect.php"); // connect to database
 include("validate.php"); // validation functions
 require("S3.php"); // connecting to S3 bucket
 
+// Values to prepopulate form input boxes.
 $nameValue = "";
 $descriptionValue = "";
 $rateValue = 50;
@@ -39,6 +40,7 @@ if (isset($_POST['submitParking'])) {
         exit();
     }
 
+    // If the paramaters are set and not empty
     if (isset($_POST['name']) && !empty($_POST['name']) &&
         isset($_POST['rate']) && !empty($_POST['rate']) &&
         isset($_POST['spots']) && !empty($_POST['spots']) &&
@@ -46,14 +48,14 @@ if (isset($_POST['submitParking'])) {
         isset($_POST['longitude']) && !empty($_POST['longitude']) &&
         isset($_POST['payment_list']) && !empty($_POST['payment_list']) &&
         isset($_POST['website']) &&  !empty($_POST['website'])) {
-    // get parameters
-    $name = $_POST["name"];
-    $description = $_POST["description"];
-    $rate = $_POST["rate"];
-    $spots = $_POST["spots"];
-    $latitude = $_POST["latitude"];
-    $longitude = $_POST["longitude"];
-    $website = $_POST["website"];
+    // get parameters with htmlspecialchars to avoid xxs attacks
+    $name = htmlspecialchars($_POST["name"]);
+    $description = htmlspecialchars($_POST["description"]);
+    $rate = htmlspecialchars($_POST["rate"]);
+    $spots = htmlspecialchars($_POST["spots"]);
+    $latitude = htmlspecialchars($_POST["latitude"]);
+    $longitude = htmlspecialchars($_POST["longitude"]);
+    $website = htmlspecialchars($_POST["website"]);
     $paymentList = [];
 
     $nameValue = $name;
@@ -95,16 +97,17 @@ if (isset($_POST['submitParking'])) {
             $imageHash = sha1_file($_FILES["spotImage"]["tmp_name"]);
             $imageName = $imageHash . "." . $imageExtension;
 
+            // upload the file to s3
             $ok = $s3->putObjectFile($_FILES["spotImage"]["tmp_name"],
                                      $bucketName,
                                      $imageName,
                                      S3::ACL_PUBLIC_READ);
 
+            // file successfully uploaded to the bucket
             if ($ok) {
                 $url = 'https://s3.amazonaws.com/' . $bucketName . '/' . $imageName;
-                echo "File upload successful: ", $url;
             } else {
-                echo "Error uploading file to bucket.";
+                // file upload failed, set imageName to empty
                 $imageName = "";
             }
 
@@ -115,6 +118,7 @@ if (isset($_POST['submitParking'])) {
                 (:name, :description, :rate, :spots, :latitude, :longitude, :website, :payment, :imageName)'
             );
 
+            // Convert payment from Cash, Debit, Visa to numeric form for storing in db
             $payment = getPayment($paymentList);
 
             $stmt->bindValue(':name', $name);
@@ -129,8 +133,9 @@ if (isset($_POST['submitParking'])) {
             
             $stmt->execute();
             
-            echo "New parking added!";
+            // echo "New parking added!";
 
+            // Redirect to search page
             header("Location: http://" . $_SERVER['HTTP_HOST'] . "/search.php");
             exit();
         } catch (PDOException $error) {

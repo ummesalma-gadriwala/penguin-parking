@@ -22,21 +22,22 @@
         <form name="userRegistration" action="register.php" method="POST" class="forms" onsubmit="return validateUserRegistrationForm(this);">
             <p>
             <label>Full Name:</label>
-                <input type="text" name="fullName" required="required" pattern="^[A-Za-z]+[ ][A-Za-z]+$" value=<?php $fullNameValue ?>>
+                <input type="text" name="fullName" required="required" pattern="^[A-Za-z]+[ ][A-Za-z]+$" value=<?php echo $fullNameValue; ?>>
             </p>
             <p>
             <label>Username:</label>
-                <input type="text" name="username" required="required" pattern="^[A-z]+[A-z0-9.-]*$" minlength="2" maxlength="30" value=<?php $usernameValue ?>>
+                <input type="text" name="username" required="required" pattern="^[A-z]+[A-z0-9.-]*$" minlength="2" maxlength="30" value=<?php echo $usernameValue; ?>>
             </p>
             <p>
             <label>Date of Birth:</label>
                 <!-- date is not supported in IE and Safari.
                     It degrades to a text field. -->
-                <input type="date" name="dateOfBirth" value=<?php $dateOfBirthValue ?>>
+                <input type="date" name="dateOfBirth" value=<?php echo $dateOfBirthValue; ?>>
             </p>
             <p>
             <label>E-mail:</label>
-                <input type="email" name="email" required="required" value=<?php $emailValue ?>>
+                <input type="email" name="email" required="required" value=<?php echo $emailValue; ?>>
+                
             </p>
             <p>
             <label>Password:</label>

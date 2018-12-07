@@ -72,8 +72,8 @@ include '../php/newParking.php';
             </p>
             <p>
             <label>Image:</label>
-                <!-- Only accepts images files and is a required field. -->
-                <input type="file" name="spotImage" accept="image/jpeg" required="required">
+                <!-- Only accepts jpeg images files. -->
+                <input type="file" name="spotImage" accept="image/jpeg">
             </p>
 
             <br>

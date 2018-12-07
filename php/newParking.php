@@ -39,13 +39,13 @@ if (isset($_POST['submitParking'])) {
         exit();
     }
 
-    if (isset($_POST['name']) &&
-        isset($_POST['rate']) &&
-        isset($_POST['spots']) &&
-        isset($_POST['latitude']) &&
-        isset($_POST['longitude']) &&
-        isset($_POST['payment_list']) &&
-        isset($_POST['website'])) {
+    if (isset($_POST['name']) && !empty($_POST['name']) &&
+        isset($_POST['rate']) && !empty($_POST['rate']) &&
+        isset($_POST['spots']) && !empty($_POST['spots']) &&
+        isset($_POST['latitude']) && !empty($_POST['latitude']) &&
+        isset($_POST['longitude']) && !empty($_POST['longitude']) &&
+        isset($_POST['payment_list']) && !empty($_POST['payment_list']) &&
+        isset($_POST['website']) &&  !empty($_POST['website'])) {
     // get parameters
     $name = $_POST["name"];
     $description = $_POST["description"];

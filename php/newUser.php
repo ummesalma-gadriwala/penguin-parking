@@ -3,10 +3,10 @@ require_once("dbConnect.php"); // connect to database
 include("validate.php");
 
 // Values for input box to preload data for an error form
-$fullNameValue = "";
-$usernameValue = "";
-$dateOfBirthValue = "";
-$emailValue = "";
+// $fullNameValue = "";
+// $usernameValue = "";
+// $dateOfBirthValue = "";
+// $emailValue = "";
 
 
 if (isset($_POST['register'])) {
@@ -24,6 +24,11 @@ if (isset($_POST['register'])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $passwordRetype = $_POST["passwordRetype"];
+
+    $fullNameValue = htmlspecialchars($fullName);
+    $usernameValue = htmlspecialchars($username);
+    $dateOfBirthValue = htmlspecialchars($dateOfBirth);
+    $emailValue = htmlspecialchars($email);
     
     // validate user registration form input
     if (validateName($fullName, $fullNameValue) &&

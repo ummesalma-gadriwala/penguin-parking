@@ -2,11 +2,11 @@
 // Connect to MySQL database using PDO
 // Using PDO allows me to connect to any database (yayy!)
 $serverName = "localhost";
-$username = "gadriwau";
-$password = "password";
+$username = "";
+$password = "";
 
 try {
-    $conn = new PDO("mysql:host=$serverName;dbname=gadriwau",
+    $conn = new PDO("mysql:host=$serverName;dbname=dbname",
                      $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

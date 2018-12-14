@@ -3,9 +3,9 @@ require_once("dbConnect.php"); // connect to database
 include("validate.php"); // validation functions
 require("S3.php"); // connecting to S3 bucket
 
-$awsAccessKey = "AKIAIJ5T4P6C2ZU45VWA";
-$awsSecretKey = "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";
-$bucketName = "gadriwau";
+$awsAccessKey = "";
+$awsSecretKey = "";
+$bucketName = "";
 $s3 = new S3($awsAccessKey, $awsSecretKey);
 
 if (isset($_POST['submitParking'])) {
